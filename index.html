@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清邁第一天行程｜12/19</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold:    #C9A84C;
+    --gold-lt: #EDD98A;
+    --rust:    #8B3A2A;
+    --cream:   #FAF6EE;
+    --ink:     #1E1A14;
+    --muted:   #7A7062;
+    --card-bg: #FFFFFF;
+    --border:  #E8DFC8;
+  }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #3B2214 0%, #6B3F22 50%, #8B5A30 100%);
+    padding: 60px 24px 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 1;
+  }
+  .hero-eyebrow {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--gold-lt);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(32px, 8vw, 56px);
+    font-weight: 900;
+    color: #FFF;
+    line-height: 1.15;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .hero h1 span {
+    color: var(--gold-lt);
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    position: relative;
+    margin-top: 12px;
+  }
+  .hero-ornament {
+    position: relative;
+    margin: 24px auto 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* ── SUMMARY STRIP ── */
+  .summary {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: var(--rust);
+    flex-wrap: wrap;
+  }
+  .summary-item {
+    flex: 1 1 120px;
+    text-align: center;
+    padding: 16px 12px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+  }
+  .summary-item:last-child { border-right: none; }
+  .summary-item .val {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .summary-item .lbl {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--border));
+  }
+
+  .stop {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .stop:last-child { margin-bottom: 0; }
+
+  .stop-dot {
+    position: absolute;
+    left: -32px;
+    top: 14px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    z-index: 1;
+  }
+
+  .stop-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .stop-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .stop-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .stop-time {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--rust);
+    background: rgba(139,58,42,0.08);
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .stop-tag {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .stop-rating {
+    font-size: 12px;
+    color: #B8860B;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .stop-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .stop-name-en {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 6px;
+  }
+  .stop-desc {
+    font-size: 14px;
+    color: #5A5248;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .stop-tips {
+    background: linear-gradient(135deg, #FFF9EC, #FFF3D6);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #6B5820;
+    line-height: 1.6;
+  }
+  .stop-tips::before {
+    content: '💡 ';
+  }
+  .map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 1px solid rgba(139,58,42,0.25);
+    border-radius: 20px;
+    transition: all 0.15s;
+  }
+  .map-btn:hover {
+    background: var(--rust);
+    color: #fff;
+  }
+  .map-btn svg { width: 14px; height: 14px; }
+
+  /* ── MAP ── */
+  .map-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+  .map-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+  .map-wrapper iframe {
+    width: 100%;
+    height: 420px;
+    border: none;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 480px) {
+    .stop-name-en { display: block; margin-left: 0; margin-top: 2px; }
+    .stop-rating { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-eyebrow">清邁 Chiang Mai ・ 3天2夜</p>
+  <h1>第一天<span>行程</span></h1>
+  <p class="hero-sub">12月19日（週四）・ 古城漫步 × 咖啡廳 × 夜市</p>
+  <div class="hero-ornament"></div>
+</header>
+
+<!-- SUMMARY STRIP -->
+<div class="summary">
+  <div class="summary-item"><div class="val">6</div><div class="lbl">個景點</div></div>
+  <div class="summary-item"><div class="val">步行</div><div class="lbl">主要交通</div></div>
+  <div class="summary-item"><div class="val">4.5+</div><div class="lbl">平均 Google 評分</div></div>
+  <div class="summary-item"><div class="val">早→夜</div><div class="lbl">完整全天行程</div></div>
+</div>
+
+<!-- MAP -->
+<div class="map-section" style="padding-top:40px;">
+  <p class="section-title">📍 今日地圖</p>
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Chiang+Mai+Old+City,Thailand&zoom=14"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:10px;text-align:center;">
+    ↓ 每個景點卡片附有 Google 地圖連結，點擊可導航
+  </p>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline-section">
+  <p class="section-title">🗺 行程時間軸</p>
+  <div class="timeline">
+
+    <!-- 早餐 -->
+    <div class="stop">
+      <div class="stop-dot">🍳</div>
+      <div class="stop-card">
+        <div class="stop-meta">
+          <span class="stop-time">08:30</span>
+          <span class="stop-tag">早餐</span>
+          <span class="stop-rating">⭐ 4.7・1,112則</span>
+        </div>
+        <div class="stop-name">MITTE MITTE Cafe & Brunch<span class="stop-name-en">古城早午餐</span></div>
+        <p class="stop-desc">古城內最受歡迎的早午餐咖啡廳，裝潢溫馨有質感，樓上還有座位區。招牌 Chang Moi Katsu Bagel 鹹酥炸豬排貝果廣受好評，搭配鮮榨果汁完美開啟一天。</p>
+        <div class="stop-tips">必點 Chang Moi Katsu Bagel 與酪梨冰沙。信用卡消費需滿 500 泰銖，建議帶現金備用。</div>
+        <a class="map-btn" href="https://maps.google.com/?cid=5180560742290690679" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Google 地圖導航
+        </a>
+      </div>
+    </div>
+
+    <!-- 柴迪隆寺 -->
+    <div class="stop">
+      <div class="stop-dot">🛕</div>
+      <div class="stop-card">
+        <div class="stop-meta">
+          <span class="stop-time">10:00</span>
+          <span class="stop-tag">寺廟</span>
+          <span class="stop-rating">⭐ 4.7・18,150則</span>
+        </div>
+        <div class="stop-name">柴迪隆寺<span class="stop-name-en">Wat Chedi Luang</span></div>
+        <p class="stop-desc">清邁最壯觀的古寺，建於 14 世紀蘭納王朝，主塔高達 60 公尺。半毀的磚塔佈滿苔蘚，透著歲月滄桑之美。傍晚有雷射光雕秀更加震撼，早上則人少適合靜心拍照。</p>
+        <div class="stop-tips">入場費約 40 泰銖。需穿蓋肩蓋膝衣物，門口有出租布巾（約 20 泰銖）。</div>
+        <a class="map-btn" href="https://maps.google.com/?cid=6698946777536243898" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Google 地圖導航
+        </a>
+      </div>
+    </div>
+
+    <!-- 帕辛寺 -->
+    <div class="stop">
+      <div class="stop-dot">🛕</div>
+      <div class="stop-card">
+        <div class="stop-meta">
+          <span class="stop-time">11:00</span>
+          <span class="stop-tag">寺廟</span>
+          <span class="stop-rating">⭐ 4.7・17,355則</span>
+        </div>
+        <div class="stop-name">帕辛寺<span class="stop-name-en">Wat Phra Singh</span></div>
+        <p class="stop-desc">蘭納建築美學的代表作，以精緻木雕與金塔聞名，是清邁最重要的皇家寺廟之一。從柴迪隆寺步行約 5 分鐘即可抵達，建議慢慢欣賞殿內壁畫。</p>
+        <div class="stop-tips">入場費約 20 泰銖。上午光線充足，非常適合拍照留念。</div>
+        <a class="map-btn" href="https://maps.google.com/?cid=10833085540246312169" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Google 地圖導航
+        </a>
+      </div>
+    </div>
+
+    <!-- 午餐 -->
+    <div class="stop">
+      <div class="stop-dot">🍜</div>
+      <div class="stop-card">
+        <div class="stop-meta">
+          <span class="stop-time">12:30</span>
+          <span class="stop-tag">午餐</span>
+          <span class="stop-rating">⭐ 4.7・2,386則</span>
+        </div>
+        <div class="stop-name">Mr. KAI Restaurant<span class="stop-name-en">道地泰菜</span></div>
+        <p class="stop-desc">古城內性價比最高的道地泰菜餐廳。招牌咖哩麵（Khao Soi）份量超大、湯頭濃郁，蒸魚與各式炒菜也廣受好評。老闆親切，用餐環境舒適，是觀光客與當地人都愛去的店。</p>
+        <div class="stop-tips">週一公休，其他時間 9:00–21:00 營業。中午用餐時段人多，12:00 前到可避開等位。</div>
+        <a class="map-btn" href="https://maps.google.com/?cid=18348996211599255653" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Google 地圖導航
+        </a>
+      </div>
+    </div>
+
+    <!-- 下午茶 -->
+    <div class="stop">
+      <div class="stop-dot">☕</div>
+      <div class="stop-card">
+        <div class="stop-meta">
+          <span class="stop-time">15:00</span>
+          <span class="stop-tag">下午茶・咖啡廳</span>
+          <span class="stop-rating">⭐ 4.9・2,166則</span>
+        </div>
+        <div class="stop-name">TWENTY MAR<span class="stop-name-en">精品咖啡廳</span></div>
+        <p class="stop-desc">清邁最受矚目的精品咖啡廳之一，隱身在古城小巷，充滿昭和年代的復古氛圍。以哥倫比亞豆為主，招牌「Sense of Dirty」與「Super Dirty」是創意泰式咖啡的最高境界，每杯都像一件藝術品。</p>
+        <div class="stop-tips">座位有限且不接受外帶吵鬧，保持安靜氣氛。週四休息，請注意！建議改去 GRAPH Cafe（⭐4.5，也在古城內）作為備案。</div>
+        <a class="map-btn" href="https://maps.google.com/?cid=5180560742290690679" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Google 地圖導航
+        </a>
+      </div>
+    </div>
+
+    <!-- 塔佩門 -->
+    <div class="stop">
+      <div class="stop-dot">🏛️</div>
+      <div class="stop-card">
+        <div class="stop-meta">
+          <span class="stop-time">17:00</span>
+          <span class="stop-tag">地標・打卡</span>
+          <span class="stop-rating">⭐ 4.4・28,898則</span>
+        </div>
+        <div class="stop-name">塔佩門<span class="stop-name-en">Tha Phae Gate</span></div>
+        <p class="stop-desc">清邁最具代表性的城門地標，建於 1296 年，是古城東面的主要入口。夕陽時分光線最美，城牆磚紅在金色餘暉下特別好看。周邊有許多街頭小吃與紀念品攤。</p>
+        <div class="stop-tips">全天免費開放。傍晚人潮較多，拍照可選角度繞開人群，城牆頂端視野更好。</div>
+        <a class="map-btn" href="https://maps.google.com/?cid=11329807256011745014" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Google 地圖導航
+        </a>
+      </div>
+    </div>
+
+    <!-- 夜市 -->
+    <div class="stop">
+      <div class="stop-dot">🌙</div>
+      <div class="stop-card">
+        <div class="stop-meta">
+          <span class="stop-time">19:00</span>
+          <span class="stop-tag">晚餐・夜市</span>
+          <span class="stop-rating">⭐ 4.3・26,773則</span>
+        </div>
+        <div class="stop-name">清邁夜市<span class="stop-name-en">Night Bazaar</span></div>
+        <p class="stop-desc">清邁最知名的露天夜市，每晚 17:00 起開市。燒烤海鮮、各式街頭小吃、手工藝品、紀念品一應俱全。邊逛邊吃是最道地的玩法，肚子餓了就停下來，逛到盡興為止。</p>
+        <div class="stop-tips">建議晚上 7 點後去人潮最旺，攤位最齊。預算抓 200–400 泰銖/人，吃飽沒問題。小心扒手，手機與錢包放前包。</div>
+        <a class="map-btn" href="https://maps.google.com/?cid=805850765827944477" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Google 地圖導航
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+</div>
+
+<!-- FULL MAP WITH ALL PINS -->
+<div class="map-section">
+  <p class="section-title">🗺 所有景點地圖</p>
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&origin=MITTE+MITTE+Cafe+Chiang+Mai&destination=Chiang+Mai+Night+Bazaar&waypoints=Wat+Chedi+Luang+Chiang+Mai|Wat+Phra+Singh+Chiang+Mai|Mr+Kai+Restaurant+Chiang+Mai|Twenty+Mar+Chiang+Mai|Tha+Phae+Gate+Chiang+Mai&mode=walking"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<footer>
+  ✦ 清邁第一天行程 12/19（週四）✦<br>
+  <span style="opacity:0.6;font-size:11px;margin-top:4px;display:block;">行程規劃僅供參考，實際狀況依現場為準</span>
+</footer>
+
+</body>
+</html>
