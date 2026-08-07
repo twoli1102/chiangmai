@@ -289,6 +289,28 @@
     border-top: 1px solid var(--border);
   }
 
+  .map-quick-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.15s;
+    font-size: 14px;
+  }
+  .map-quick-btn:hover {
+    border-color: var(--gold);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transform: translateY(-1px);
+  }
+  .mq-icon { font-size: 22px; flex-shrink: 0; }
+  .mq-text { line-height: 1.4; }
+  .mq-text small { color: var(--muted); font-size: 12px; }
+
   @media (max-width: 480px) {
     .stop-name-en { display: block; margin-left: 0; margin-top: 2px; }
     .stop-rating { margin-left: 0; }
@@ -313,20 +335,35 @@
   <div class="summary-item"><div class="val">早→夜</div><div class="lbl">完整全天行程</div></div>
 </div>
 
-<!-- MAP -->
+<!-- MAP LINKS -->
 <div class="map-section" style="padding-top:40px;">
-  <p class="section-title">📍 今日地圖</p>
-  <div class="map-wrapper">
-    <iframe
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Chiang+Mai+Old+City,Thailand&zoom=14"
-      allowfullscreen
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+  <p class="section-title">📍 景點地圖快速連結</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+    <a href="https://maps.google.com/?q=MITTE+MITTE+Cafe+Chiang+Mai" target="_blank" class="map-quick-btn">
+      <span class="mq-icon">🍳</span><span class="mq-text"><strong>MITTE MITTE</strong><br><small>早餐咖啡廳</small></span>
+    </a>
+    <a href="https://maps.google.com/?q=Wat+Chedi+Luang+Chiang+Mai" target="_blank" class="map-quick-btn">
+      <span class="mq-icon">🛕</span><span class="mq-text"><strong>柴迪隆寺</strong><br><small>Wat Chedi Luang</small></span>
+    </a>
+    <a href="https://maps.google.com/?q=Wat+Phra+Singh+Chiang+Mai" target="_blank" class="map-quick-btn">
+      <span class="mq-icon">🛕</span><span class="mq-text"><strong>帕辛寺</strong><br><small>Wat Phra Singh</small></span>
+    </a>
+    <a href="https://maps.google.com/?q=Mr+KAI+Restaurant+Chiang+Mai" target="_blank" class="map-quick-btn">
+      <span class="mq-icon">🍜</span><span class="mq-text"><strong>Mr. KAI</strong><br><small>午餐・道地泰菜</small></span>
+    </a>
+    <a href="https://maps.google.com/?q=TWENTY+MAR+Chiang+Mai" target="_blank" class="map-quick-btn">
+      <span class="mq-icon">☕</span><span class="mq-text"><strong>TWENTY MAR</strong><br><small>下午茶咖啡廳</small></span>
+    </a>
+    <a href="https://maps.google.com/?q=Tha+Phae+Gate+Chiang+Mai" target="_blank" class="map-quick-btn">
+      <span class="mq-icon">🏛️</span><span class="mq-text"><strong>塔佩門</strong><br><small>Tha Phae Gate</small></span>
+    </a>
+    <a href="https://maps.google.com/?q=Chiang+Mai+Night+Bazaar" target="_blank" class="map-quick-btn">
+      <span class="mq-icon">🌙</span><span class="mq-text"><strong>清邁夜市</strong><br><small>Night Bazaar</small></span>
+    </a>
+    <a href="https://www.google.com/maps/dir/MITTE+MITTE+Cafe+Chiang+Mai/Wat+Chedi+Luang+Chiang+Mai/Wat+Phra+Singh+Chiang+Mai/Mr+Kai+Restaurant+Chiang+Mai/Tha+Phae+Gate+Chiang+Mai/Chiang+Mai+Night+Bazaar/" target="_blank" class="map-quick-btn" style="background:var(--rust);color:#fff;border-color:var(--rust);">
+      <span class="mq-icon">🗺️</span><span class="mq-text"><strong>完整路線</strong><br><small>一鍵開啟導航</small></span>
+    </a>
   </div>
-  <p style="font-size:13px;color:var(--muted);margin-top:10px;text-align:center;">
-    ↓ 每個景點卡片附有 Google 地圖連結，點擊可導航
-  </p>
 </div>
 
 <!-- TIMELINE -->
@@ -470,18 +507,7 @@
   </div><!-- /timeline -->
 </div>
 
-<!-- FULL MAP WITH ALL PINS -->
-<div class="map-section">
-  <p class="section-title">🗺 所有景點地圖</p>
-  <div class="map-wrapper">
-    <iframe
-      src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&origin=MITTE+MITTE+Cafe+Chiang+Mai&destination=Chiang+Mai+Night+Bazaar&waypoints=Wat+Chedi+Luang+Chiang+Mai|Wat+Phra+Singh+Chiang+Mai|Mr+Kai+Restaurant+Chiang+Mai|Twenty+Mar+Chiang+Mai|Tha+Phae+Gate+Chiang+Mai&mode=walking"
-      allowfullscreen
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</div>
+
 
 <footer>
   ✦ 清邁第一天行程 12/19（週四）✦<br>
