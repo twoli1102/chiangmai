@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清邁住宿比較｜12月行程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teak:    #7B5B3A;
+  --teak-lt: #A67C52;
+  --jungle:  #2D4A3E;
+  --sand:    #F7F2E8;
+  --paper:   #FDFAF4;
+  --ink:     #1A1712;
+  --muted:   #7A7265;
+  --border:  #E2D9C8;
+  --white:   #FFFFFF;
+  --star:    #D4A017;
+  --good:    #3A7D44;
+  --bad:     #B5351E;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--sand);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--jungle);
+  padding: 56px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: var(--sand);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(28px, 7vw, 48px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #C8A96E;
+}
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ── LEGEND ── */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 20px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.legend span { display: flex; align-items: center; gap: 5px; }
+
+/* ── CARDS GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 24px auto 0;
+  padding: 0 20px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+
+/* card header */
+.card-header {
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.card-rank {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--sand);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+.card-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  padding-right: 60px;
+  line-height: 1.3;
+}
+.card-area {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.card-score {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.score-val {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--teak);
+}
+.score-max {
+  font-size: 13px;
+  color: var(--muted);
+}
+.stars {
+  color: var(--star);
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+/* tag row */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-weight: 500;
+}
+.tag-yes { background: #EAF5EC; border-color: #A8D8B0; color: #2A5E33; }
+.tag-no  { background: #F9EDED; border-color: #E0A8A8; color: #7A2020; }
+.tag-neu { background: var(--sand); border-color: var(--border); color: var(--muted); }
+
+/* rows */
+.card-body { padding: 14px 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+.row { display: flex; gap: 10px; align-items: flex-start; }
+.row-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+.row-content {}
+.row-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.row-val {
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 2px 0;
+}
+
+/* pros/cons */
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 20px 14px;
+}
+.pros, .cons {
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.pros { background: #EAF5EC; }
+.cons { background: #FDF0EE; }
+.pc-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pros .pc-title { color: #2A5E33; }
+.cons .pc-title { color: #7A2020; }
+.pc-item {
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.5;
+  display: flex;
+  gap: 5px;
+}
+.pc-item::before { flex-shrink: 0; }
+.pros .pc-item::before { content: '+'; color: #2A5E33; font-weight: 700; }
+.cons .pc-item::before { content: '−'; color: #7A2020; font-weight: 700; }
+
+/* best for */
+.best-for {
+  margin: 0 20px 16px;
+  background: linear-gradient(135deg, #F7F0E3, #EFE8D6);
+  border-left: 3px solid var(--teak-lt);
+  border-radius: 0 8px 8px 0;
+  padding: 9px 12px;
+  font-size: 12px;
+  color: var(--teak);
+  line-height: 1.5;
+}
+.best-for strong { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; opacity: 0.7; }
+
+/* map btn */
+.map-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 20px 20px;
+  padding: 11px;
+  background: var(--jungle);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.map-btn:hover { background: #1A3029; }
+.map-btn svg { width: 15px; height: 15px; }
+
+/* ── COMPARISON TABLE ── */
+.table-section {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 0 20px 60px;
+}
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 13px;
+  min-width: 680px;
+}
+thead th {
+  background: var(--jungle);
+  color: #fff;
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  white-space: nowrap;
+}
+thead th:first-child { text-align: left; background: #1A3029; }
+tbody tr:nth-child(even) td { background: #FAFAF7; }
+tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  vertical-align: middle;
+  color: var(--ink);
+}
+tbody td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+  background: var(--sand);
+}
+tbody tr:last-child td { border-bottom: none; }
+.yes { color: var(--good); font-size: 16px; }
+.no  { color: var(--bad);  font-size: 16px; }
+.score-cell { font-weight: 700; color: var(--teak); font-size: 15px; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 520px) {
+  .pros-cons { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-label">清邁 · 住宿比較 · 12月行程</p>
+  <h1>五間住宿<em>完整比較</em></h1>
+  <p class="hero-sub">評分・位置・設施・優缺點，一頁看完幫你做決定</p>
+</header>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span>✅ 有提供</span>
+  <span>❌ 無提供</span>
+  <span>+ 優點</span>
+  <span>− 缺點</span>
+</div>
+
+<!-- CARDS -->
+<div class="grid">
+
+  <!-- 1. Le Naview -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-rank">古城正中心</span>
+      <div class="card-name">Le Naview Phra Singh</div>
+      <div class="card-area">📍 古城內・帕辛寺旁</div>
+      <div class="card-score">
+        <span class="score-val">9.2</span>
+        <span class="score-max">/ 10</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-yes">✅ 含早餐</span>
+      <span class="tag tag-yes">✅ 游泳池</span>
+      <span class="tag tag-yes">✅ 免費停車</span>
+      <span class="tag tag-yes">✅ 電梯</span>
+      <span class="tag tag-neu">52間房</span>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <span class="row-icon">🛏️</span>
+        <div class="row-content">
+          <div class="row-label">房型</div>
+          <div class="row-val">傳統飯店式，房間寬敞有私人陽台</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">🚶</span>
+        <div class="row-content">
+          <div class="row-label">步行距離</div>
+          <div class="row-val">帕辛寺 8 分鐘・夜市需搭車（約 30 分鐘）</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">💰</span>
+        <div class="row-content">
+          <div class="row-label">參考價格</div>
+          <div class="row-val">約 NT$1,500–2,200 / 晚</div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pc-title">優點</div>
+        <div class="pc-item">古城中心最佳位置</div>
+        <div class="pc-item">設施最完整（池＋早餐）</div>
+        <div class="pc-item">員工親切口碑好</div>
+        <div class="pc-item">房間每日打掃到位</div>
+      </div>
+      <div class="cons">
+        <div class="pc-title">缺點</div>
+        <div class="pc-item">到夜市需搭車</div>
+        <div class="pc-item">泳池稍嫌老舊</div>
+        <div class="pc-item">早餐需另外付費加購</div>
+      </div>
+    </div>
+    <div class="best-for"><strong>最適合</strong>一般旅客、情侶・想輕鬆逛古城</div>
+    <a class="map-btn" href="https://maps.google.com/?q=Le+Naview+Phra+Singh+Chiang+Mai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      在 Google Maps 查看位置
+    </a>
+  </div>
+
+  <!-- 2. POR Kotchasarn -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-rank">夜市最近</span>
+      <div class="card-name">POR Kotchasarn</div>
+      <div class="card-area">📍 塔佩門旁・Chang Moi</div>
+      <div class="card-score">
+        <span class="score-val">8.3</span>
+        <span class="score-max">/ 10</span>
+        <span class="stars">★★★★</span>
+      </div>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-yes">✅ 免費早餐</span>
+      <span class="tag tag-yes">✅ 游泳池</span>
+      <span class="tag tag-yes">✅ 免費停車</span>
+      <span class="tag tag-yes">✅ 電梯</span>
+      <span class="tag tag-neu">48間房・新飯店</span>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <span class="row-icon">🛏️</span>
+        <div class="row-content">
+          <div class="row-label">房型</div>
+          <div class="row-val">新式飯店，有私人陽台・Netflix</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">🚶</span>
+        <div class="row-content">
+          <div class="row-label">步行距離</div>
+          <div class="row-val">塔佩門 4 分鐘・夜市 10 分鐘</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">💰</span>
+        <div class="row-content">
+          <div class="row-label">參考價格</div>
+          <div class="row-val">約 NT$1,200–1,800 / 晚</div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pc-title">優點</div>
+        <div class="pc-item">五間裡離夜市最近</div>
+        <div class="pc-item">免費早餐＋泳池</div>
+        <div class="pc-item">設施全新、有Netflix</div>
+        <div class="pc-item">員工服務態度好</div>
+      </div>
+      <div class="cons">
+        <div class="pc-title">缺點</div>
+        <div class="pc-item">新飯店管理尚未穩定</div>
+        <div class="pc-item">check-in 偶有等待</div>
+        <div class="pc-item">早餐口味偏西式</div>
+      </div>
+    </div>
+    <div class="best-for"><strong>最適合</strong>重視便利性・愛逛夜市的旅客</div>
+    <a class="map-btn" href="https://maps.google.com/?q=POR+Kotchasarn+Chiang+Mai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      在 Google Maps 查看位置
+    </a>
+  </div>
+
+  <!-- 3. Nord Studio -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-rank">空間最大</span>
+      <div class="card-name">Nord Studio</div>
+      <div class="card-area">📍 尼曼路 Soi 17</div>
+      <div class="card-score">
+        <span class="score-val">9.2</span>
+        <span class="score-max">/ 10</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-no">❌ 無早餐</span>
+      <span class="tag tag-no">❌ 無泳池</span>
+      <span class="tag tag-yes">✅ 停車</span>
+      <span class="tag tag-no">❌ 無電梯</span>
+      <span class="tag tag-neu">僅6間房・公寓式</span>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <span class="row-icon">🛏️</span>
+        <div class="row-content">
+          <div class="row-label">房型</div>
+          <div class="row-val">公寓式套房，60–70㎡，含客廳+廚房+微波爐</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">🚶</span>
+        <div class="row-content">
+          <div class="row-label">步行距離</div>
+          <div class="row-val">尼曼路 2 分鐘・古城約 3km 需搭車</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">💰</span>
+        <div class="row-content">
+          <div class="row-label">參考價格</div>
+          <div class="row-val">約 NT$1,800–2,800 / 晚（4人均攤超划算）</div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pc-title">優點</div>
+        <div class="pc-item">房間超大，含客廳沙發</div>
+        <div class="pc-item">位於文青尼曼路核心</div>
+        <div class="pc-item">樓下 Beast Burger 超讚</div>
+        <div class="pc-item">多人同住性價比最高</div>
+      </div>
+      <div class="cons">
+        <div class="pc-title">缺點</div>
+        <div class="pc-item">無早餐、無泳池</div>
+        <div class="pc-item">距古城較遠需搭車</div>
+        <div class="pc-item">無電梯・廚房無爐灶</div>
+        <div class="pc-item">床鋪偏硬（部分旅客反映）</div>
+      </div>
+    </div>
+    <div class="best-for"><strong>最適合</strong>2–4人同行・愛文青尼曼路氛圍</div>
+    <a class="map-btn" href="https://maps.google.com/?q=Nord+Studio+Nimman+Chiang+Mai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      在 Google Maps 查看位置
+    </a>
+  </div>
+
+  <!-- 4. White Elephant -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-rank">氣氛最佳</span>
+      <div class="card-name">The White Elephant Home</div>
+      <div class="card-area">📍 古城北門外・Si Phum</div>
+      <div class="card-score">
+        <span class="score-val">9.1</span>
+        <span class="score-max">/ 10</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-yes">✅ 現做早餐</span>
+      <span class="tag tag-no">❌ 無泳池</span>
+      <span class="tag tag-yes">✅ 免費停車</span>
+      <span class="tag tag-no">❌ 無電梯</span>
+      <span class="tag tag-neu">精品民宿・Villa房型</span>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <span class="row-icon">🛏️</span>
+        <div class="row-content">
+          <div class="row-label">房型</div>
+          <div class="row-val">精品民宿，Villa型有獨立庭院，花園環境</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">🚶</span>
+        <div class="row-content">
+          <div class="row-label">步行距離</div>
+          <div class="row-val">古城北門步行 5–7 分鐘・夜市需搭車</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">💰</span>
+        <div class="row-content">
+          <div class="row-label">參考價格</div>
+          <div class="row-val">約 NT$1,400–2,500 / 晚</div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pc-title">優點</div>
+        <div class="pc-item">花園庭院氛圍絕佳</div>
+        <div class="pc-item">早餐現點現做超好吃</div>
+        <div class="pc-item">老闆娘親切溫暖</div>
+        <div class="pc-item">床鋪被評為清邁最舒服</div>
+      </div>
+      <div class="cons">
+        <div class="pc-title">缺點</div>
+        <div class="pc-item">無泳池、無電梯</div>
+        <div class="pc-item">夜市與景點需搭車</div>
+        <div class="pc-item">房間數少較難訂</div>
+      </div>
+    </div>
+    <div class="best-for"><strong>最適合</strong>情侶・家庭・重視住宿體驗與氣氛</div>
+    <a class="map-btn" href="https://maps.google.com/?q=The+White+Elephant+Home+Chiang+Mai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      在 Google Maps 查看位置
+    </a>
+  </div>
+
+  <!-- 5. Oldy de Garden -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-rank">性價比最高</span>
+      <div class="card-name">Oldy de Garden</div>
+      <div class="card-area">📍 古城北門 Chang Phuak</div>
+      <div class="card-score">
+        <span class="score-val">9.2</span>
+        <span class="score-max">/ 10</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+    <div class="card-tags">
+      <span class="tag tag-no">❌ 無早餐</span>
+      <span class="tag tag-no">❌ 無泳池</span>
+      <span class="tag tag-yes">✅ 免費停車</span>
+      <span class="tag tag-no">❌ 無電梯</span>
+      <span class="tag tag-neu">16間・公寓式・有廚房</span>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <span class="row-icon">🛏️</span>
+        <div class="row-content">
+          <div class="row-label">房型</div>
+          <div class="row-val">公寓式，寬敞安靜，全配廚房，有花園</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">🚶</span>
+        <div class="row-content">
+          <div class="row-label">步行距離</div>
+          <div class="row-val">古城北門 300m・附近有夜市攤與 7-11</div>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-icon">💰</span>
+        <div class="row-content">
+          <div class="row-label">參考價格</div>
+          <div class="row-val">約 NT$900–1,600 / 晚（五間裡最便宜）</div>
+        </div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pc-title">優點</div>
+        <div class="pc-item">價格最親民</div>
+        <div class="pc-item">花園環境安靜美麗</div>
+        <div class="pc-item">附近即有夜市攤位</div>
+        <div class="pc-item">廚房設備齊全</div>
+      </div>
+      <div class="cons">
+        <div class="pc-title">缺點</div>
+        <div class="pc-item">無早餐、無泳池</div>
+        <div class="pc-item">無電梯</div>
+        <div class="pc-item">偏北門，到寺廟稍遠</div>
+      </div>
+    </div>
+    <div class="best-for"><strong>最適合</strong>重視性價比・喜歡安靜自然氛圍</div>
+    <a class="map-btn" href="https://maps.google.com/?q=Oldy+de+Garden+Chiang+Mai" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      在 Google Maps 查看位置
+    </a>
+  </div>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="table-section">
+  <p class="section-title">📊 快速對照表</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>Le Naview<br>Phra Singh</th>
+          <th>POR<br>Kotchasarn</th>
+          <th>Nord<br>Studio</th>
+          <th>White Elephant<br>Home</th>
+          <th>Oldy de<br>Garden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>綜合評分</td>
+          <td class="score-cell">9.2</td>
+          <td class="score-cell">8.3</td>
+          <td class="score-cell">9.2</td>
+          <td class="score-cell">9.1</td>
+          <td class="score-cell">9.2</td>
+        </tr>
+        <tr>
+          <td>早餐</td>
+          <td>✅ 含（加購）</td>
+          <td>✅ 免費自助</td>
+          <td class="no">❌</td>
+          <td>✅ 現點現做</td>
+          <td class="no">❌</td>
+        </tr>
+        <tr>
+          <td>游泳池</td>
+          <td class="yes">✅</td>
+          <td class="yes">✅</td>
+          <td class="no">❌</td>
+          <td class="no">❌</td>
+          <td class="no">❌</td>
+        </tr>
+        <tr>
+          <td>電梯</td>
+          <td class="yes">✅</td>
+          <td class="yes">✅</td>
+          <td class="no">❌</td>
+          <td class="no">❌</td>
+          <td class="no">❌</td>
+        </tr>
+        <tr>
+          <td>廚房</td>
+          <td class="no">❌</td>
+          <td class="no">❌</td>
+          <td class="yes">✅</td>
+          <td class="no">❌</td>
+          <td class="yes">✅</td>
+        </tr>
+        <tr>
+          <td>免費停車</td>
+          <td class="yes">✅</td>
+          <td class="yes">✅</td>
+          <td class="yes">✅</td>
+          <td class="yes">✅</td>
+          <td class="yes">✅</td>
+        </tr>
+        <tr>
+          <td>距古城中心</td>
+          <td>古城內</td>
+          <td>步行 4 分鐘</td>
+          <td>需搭車 ~15min</td>
+          <td>步行 5–7 分鐘</td>
+          <td>步行 5 分鐘</td>
+        </tr>
+        <tr>
+          <td>距夜市</td>
+          <td>搭車 ~30min</td>
+          <td>步行 10 分鐘</td>
+          <td>搭車 ~20min</td>
+          <td>搭車 ~20min</td>
+          <td>搭車 ~20min</td>
+        </tr>
+        <tr>
+          <td>房間風格</td>
+          <td>傳統飯店</td>
+          <td>現代飯店</td>
+          <td>公寓式（超大）</td>
+          <td>精品民宿・Villa</td>
+          <td>公寓・花園庭院</td>
+        </tr>
+        <tr>
+          <td>參考價格/晚</td>
+          <td>NT$1,500–2,200</td>
+          <td>NT$1,200–1,800</td>
+          <td>NT$1,800–2,800</td>
+          <td>NT$1,400–2,500</td>
+          <td>NT$900–1,600</td>
+        </tr>
+        <tr>
+          <td>Google Maps</td>
+          <td><a href="https://maps.google.com/?q=Le+Naview+Phra+Singh+Chiang+Mai" target="_blank" style="color:var(--jungle);font-weight:500;text-decoration:none;">🗺 查看</a></td>
+          <td><a href="https://maps.google.com/?q=POR+Kotchasarn+Chiang+Mai" target="_blank" style="color:var(--jungle);font-weight:500;text-decoration:none;">🗺 查看</a></td>
+          <td><a href="https://maps.google.com/?q=Nord+Studio+Nimman+Chiang+Mai" target="_blank" style="color:var(--jungle);font-weight:500;text-decoration:none;">🗺 查看</a></td>
+          <td><a href="https://maps.google.com/?q=The+White+Elephant+Home+Chiang+Mai" target="_blank" style="color:var(--jungle);font-weight:500;text-decoration:none;">🗺 查看</a></td>
+          <td><a href="https://maps.google.com/?q=Oldy+de+Garden+Chiang+Mai" target="_blank" style="color:var(--jungle);font-weight:500;text-decoration:none;">🗺 查看</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  ✦ 清邁住宿比較・12月行程 ✦<br>
+  <span style="opacity:0.6;font-size:11px;margin-top:4px;display:block;">價格僅供參考，實際以訂房網站為準・資料整理自 Booking、Expedia、TripAdvisor</span>
+</footer>
+
+</body>
+</html>
