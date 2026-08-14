@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清邁咖啡廳攻略｜20間精選推薦</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --espresso: #2B1A0E;
+  --latte:    #C8935A;
+  --latte-lt: #F0D9BE;
+  --milk:     #FAF6EE;
+  --paper:    #F5F0E8;
+  --ink:      #1A1410;
+  --muted:    #7A6E62;
+  --border:   #E2D5BE;
+  --white:    #FFFFFF;
+  --old-city: #3D6B5A;
+  --old-lt:   #DFF0E8;
+  --nimman:   #5A3D6B;
+  --nimman-lt:#EDE0F5;
+  --river:    #3D556B;
+  --river-lt: #DDE8F5;
+  --other:    #6B5A3D;
+  --other-lt: #F5EDE0;
+}
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--paper); color: var(--ink); }
+
+/* HERO */
+.hero {
+  background: var(--espresso);
+  padding: 52px 24px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 120%, rgba(200,147,90,0.2) 0%, transparent 70%);
+}
+.hero-label { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--latte); margin-bottom: 14px; position: relative; }
+.hero h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(28px,7vw,50px); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 10px; position: relative; }
+.hero h1 em { font-style: normal; color: var(--latte-lt); }
+.hero-sub { font-size: 13px; color: rgba(255,255,255,0.5); position: relative; }
+.hero-source { margin-top: 14px; position: relative; }
+.hero-source a { font-size: 12px; color: var(--latte); text-decoration: none; border-bottom: 1px solid rgba(200,147,90,0.4); padding-bottom: 1px; }
+
+/* FILTER BAR */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; padding: 20px 20px 0; max-width: 1060px; margin: 0 auto; }
+.filter-pill {
+  font-size: 11px; font-weight: 600; padding: 5px 13px; border-radius: 20px; border: 1.5px solid; cursor: pointer;
+  transition: all 0.15s; text-decoration: none;
+}
+.f-all    { background: var(--espresso); border-color: var(--espresso); color: #fff; }
+.f-old    { background: var(--old-lt);   border-color: var(--old-city); color: var(--old-city); }
+.f-nimman { background: var(--nimman-lt);border-color: var(--nimman);   color: var(--nimman); }
+.f-river  { background: var(--river-lt); border-color: var(--river);    color: var(--river); }
+.f-other  { background: var(--other-lt); border-color: var(--other);    color: var(--other); }
+
+/* GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; max-width: 1060px; margin: 20px auto 0; padding: 0 20px; }
+
+/* CARD */
+.card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.09); }
+
+.card-top { padding: 16px 18px 12px; border-bottom: 1px solid var(--border); }
+.card-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.06em; }
+.b-old    { background: var(--old-lt);    color: var(--old-city); }
+.b-nimman { background: var(--nimman-lt); color: var(--nimman); }
+.b-river  { background: var(--river-lt);  color: var(--river); }
+.b-other  { background: var(--other-lt);  color: var(--other); }
+.b-wifi   { background: #EEF8FF; color: #1A6080; }
+.b-work   { background: #EFF8EE; color: #1A6030; }
+.b-insta  { background: #FFF0F8; color: #80206A; }
+.b-pet    { background: #FFF8E0; color: #806020; }
+.b-matcha { background: #E8F5E0; color: #2A6010; }
+.b-roast  { background: #FBF0E0; color: #804010; }
+
+.card-num { font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+.card-name { font-family: 'Noto Serif TC', serif; font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
+.card-style { font-size: 12px; color: var(--latte); font-weight: 600; margin-bottom: 6px; }
+.card-time { font-size: 12px; color: var(--muted); }
+
+.card-body { padding: 12px 18px; flex: 1; display: flex; flex-direction: column; gap: 9px; }
+.card-desc { font-size: 13px; color: #4A4035; line-height: 1.7; }
+
+.must-order {
+  background: linear-gradient(135deg, #FFF8EE, #FFF2D8);
+  border-left: 3px solid var(--latte);
+  border-radius: 0 8px 8px 0;
+  padding: 8px 11px; font-size: 12px; color: #6B4A10; line-height: 1.6;
+}
+.must-order strong { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.65; margin-bottom: 2px; }
+
+.map-btn {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  margin: 0 18px 16px; padding: 9px;
+  background: var(--espresso); color: #fff; text-decoration: none;
+  border-radius: 9px; font-size: 12px; font-weight: 500; transition: background 0.15s;
+}
+.map-btn:hover { background: #000; }
+.map-btn svg { width: 13px; height: 13px; }
+
+/* SECTION HDR */
+.sec-hdr { max-width: 1060px; margin: 36px auto 0; padding: 0 20px; display: flex; align-items: center; gap: 12px; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; white-space: nowrap; }
+.sec-rule { flex: 1; height: 1px; background: var(--border); }
+.s-old    .sec-label { background: var(--old-city); color: #fff; }
+.s-nimman .sec-label { background: var(--nimman);   color: #fff; }
+.s-river  .sec-label { background: var(--river);    color: #fff; }
+.s-other  .sec-label { background: var(--other);    color: #fff; }
+
+footer { text-align: center; padding: 28px 20px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 48px; }
+
+@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-label">清邁 Chiang Mai・咖啡廳攻略</p>
+  <h1>20間精選<em>咖啡廳</em></h1>
+  <p class="hero-sub">古城區・尼曼路・濱河區・其他，各種風格一次收錄</p>
+  <div class="hero-source"><a href="https://journey.tw/cafe-map-cnx/" target="_blank">資料來源：旅行圖中 journey.tw ↗</a></div>
+</header>
+
+<div class="filter-bar">
+  <span class="filter-pill f-all">☕ 全部</span>
+  <span class="filter-pill f-old">🏯 古城區</span>
+  <span class="filter-pill f-nimman">🌿 尼曼路</span>
+  <span class="filter-pill f-river">🌊 濱河區</span>
+  <span class="filter-pill f-other">📍 其他</span>
+</div>
+
+<!-- ===== 古城區 ===== -->
+<div class="sec-hdr s-old"><span class="sec-label">🏯 古城區 Old City</span><div class="sec-rule"></div></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-insta">網美打卡</span><span class="badge b-work">可工作</span></div>
+      <div class="card-num">01</div>
+      <div class="card-name">Carrot Coffee CNX</div>
+      <div class="card-style">廢墟工業風・老屋改造</div>
+      <div class="card-time">🕗 08:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">古城巷弄內最爆紅的工業風咖啡廳。裸露紅磚牆、清水模混凝土、二樓插座滿滿適合工作，後院半戶外綠蔭庭院最舒服。被許多部落客評為清邁最愛咖啡廳第一名。</p>
+      <div class="must-order"><strong>☕ 必點</strong>每日限量胡蘿蔔蛋糕・Dirty Coffee・Nebula（無咖啡因夢幻飲）</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Carrot+Coffee+CNX+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-insta">網美打卡</span></div>
+      <div class="card-num">02</div>
+      <div class="card-name">Zmoy Cafe（Srimoy）</div>
+      <div class="card-style">童話木屋・庭院咖啡</div>
+      <div class="card-time">🕙 10:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">藏在古城巷弄的童話風小屋，木屋白圍籬構成夢幻庭院。店名來自店主曾祖母的名字，有濃厚在地文化氣息。設有 Slow Bar 慢吧手壓咖啡區，每日手作甜點限量。</p>
+      <div class="must-order"><strong>☕ 必點</strong>手壓咖啡・檸檬磅蛋糕・每日限量手作甜點</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Zmoy+Cafe+Chiang+Mai+Old+City" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-insta">網美打卡</span></div>
+      <div class="card-num">03</div>
+      <div class="card-name">Bart Coffee</div>
+      <div class="card-style">韓系極簡・髒髒咖啡</div>
+      <div class="card-time">🕗 08:00–17:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">韓國觀光客人氣爆棚的隱藏版小店，不走網美路線，主打一杯到位的「髒髒咖啡（Dirty Coffee）」。古城巷弄內，座位不多但氣氛極好，是清邁最純粹的咖啡體驗之一。</p>
+      <div class="must-order"><strong>☕ 必點</strong>Dirty Coffee・黑糖拿鐵</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Bart+Coffee+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-insta">網美打卡</span></div>
+      <div class="card-num">04</div>
+      <div class="card-name">Blue Coffee At Old Town</div>
+      <div class="card-style">藍色主題・視覺系飲品</div>
+      <div class="card-time">🕗 08:00–20:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">清邁最火紅的視覺系連鎖咖啡廳，以「藍色拿鐵 Blue Latte」聞名全東南亞。極簡現代設計融合古城慵懶感，飲品色系唯美，每杯都是 IG 必拍打卡首選。</p>
+      <div class="must-order"><strong>☕ 必點</strong>Blue Latte 藍色拿鐵・藍色氣泡飲</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Blue+Coffee+At+Old+Town+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-pet">寵物友善</span><span class="badge b-wifi">免費Wi-Fi</span><span class="badge b-work">可工作</span></div>
+      <div class="card-num">05</div>
+      <div class="card-name">TEMPT Cafe & Brunch</div>
+      <div class="card-style">早午餐・數位遊牧友善</div>
+      <div class="card-time">🕗 08:00–17:00（週一公休）</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">2024 年開幕即爆紅的數位遊牧天堂，靠近古城清曼寺。使用泰國最佳咖啡豆銅獎阿拉比卡豆，不限時間、免費 Wi-Fi、插座充足、寵物友善，各種座位區滿足不同需求。</p>
+      <div class="must-order"><strong>☕ 必點</strong>精品美式・早午餐套餐・季節特調</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=TEMPT+Cafe+Brunch+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-insta">景觀打卡</span></div>
+      <div class="card-num">06</div>
+      <div class="card-name">Still.Coffee & Life</div>
+      <div class="card-style">廢棄大樓頂樓・景觀咖啡</div>
+      <div class="card-time">🕙 10:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">藏在華洛洛市場附近廢棄大樓裡的驚喜咖啡廳。爬上舊樓梯後，視野豁然開朗，可俯瞰整個清邁古城老街風景。不走網美路線，卻是最出乎意料的秘境體驗。</p>
+      <div class="must-order"><strong>☕ 必點</strong>手沖咖啡・頂樓景觀座位・老城風景攝影</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Still+Coffee+Life+Chiang+Mai+Warorot" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-insta">極簡打卡</span></div>
+      <div class="card-num">07</div>
+      <div class="card-name">Wabi Sabi Coffee Cool Muang</div>
+      <div class="card-style">清水模極簡・光影空間</div>
+      <div class="card-time">🕗 08:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">以清水模建材為主軸的極簡風格咖啡廳，光線透過建築縫隙投射出迷人光影。招牌「椰子美式」是意外驚喜，清水模空間讓每個角度都是一張好照片。</p>
+      <div class="must-order"><strong>☕ 必點</strong>椰子美式・黑糖牛奶咖啡</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Wabi+Sabi+Coffee+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城附近</span><span class="badge b-matcha">抹茶專門</span></div>
+      <div class="card-num">08</div>
+      <div class="card-name">KOHICHA.cnx</div>
+      <div class="card-style">日泰混血・抹茶 × 咖啡</div>
+      <div class="card-time">🕗 08:00–18:00・📍 南門附近 Thipanet Rd</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">以「Coffee × Matcha」為核心的日泰混血咖啡廳，將日本抹茶工藝與泰國椰子、芒果結合。木質無印良品風格，大面落地窗採光極佳，不限時間可帶電腦工作。平日也常常一位難求。</p>
+      <div class="must-order"><strong>☕ 必點</strong>椰子抹茶拿鐵・芒果抹茶・日式抹茶甜點</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=KOHICHA+cnx+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span></div>
+      <div class="card-num">09</div>
+      <div class="card-name">Muan Nai Vieng Cafe</div>
+      <div class="card-style">精品旅宿附設・質感系</div>
+      <div class="card-time">🕙 10:00–20:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">2026 年新開幕精品旅店 Muan Nai Vieng 一樓附設咖啡廳。採半開放設計，大量玻璃磚引進自然光，招牌漸層系列飲品清涼消暑。店員英文好，價格實惠不超過百泰銖。</p>
+      <div class="must-order"><strong>☕ 必點</strong>漸層系列飲品・招牌泰北特調</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Muan+Nai+Vieng+Cafe+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-old">古城</span><span class="badge b-insta">打卡</span></div>
+      <div class="card-num">10</div>
+      <div class="card-name">Pegasus Café & Roastery</div>
+      <div class="card-style">溫室秘境・自家烘焙</div>
+      <div class="card-time">🕗 08:00–17:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">藏在巷仔內的溫室咖啡館，玻璃屋頂讓陽光灑落，植物環繞充滿生命感。自家烘焙豆，橘子美式是招牌特調，週末需早點到否則一位難求。秘境感十足，IG 打卡必訪。</p>
+      <div class="must-order"><strong>☕ 必點</strong>橘子美式・溫室手沖・卡士達可頌</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Pegasus+Cafe+Roastery+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+</div>
+
+<!-- ===== 尼曼路 ===== -->
+<div class="sec-hdr s-nimman"><span class="sec-label">🌿 尼曼路 Nimman Road</span><div class="sec-rule"></div></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-nimman">尼曼路</span><span class="badge b-roast">精品烘焙</span></div>
+      <div class="card-num">11</div>
+      <div class="card-name">Ristr8to Original</div>
+      <div class="card-style">世界拉花冠軍・精品咖啡</div>
+      <div class="card-time">🕗 07:08–18:08（這營業時間很有個性）</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">清邁精品咖啡的 OG 傳奇。老闆自 2007 年起連年獲得世界拉花大賽殊榮，被評為全清邁最好喝的咖啡廳。深烘豆風味獨到，拿鐵拉花藝術讓人捨不得喝。One Nimman 廣場旁。</p>
+      <div class="must-order"><strong>☕ 必點</strong>招牌拿鐵（附拉花藝術）・Piccolo・單品手沖</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Ristr8to+Original+Nimman+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-nimman">尼曼路</span><span class="badge b-roast">精品烘焙</span><span class="badge b-insta">打卡</span></div>
+      <div class="card-num">12</div>
+      <div class="card-name">GRAPH Cafe（古城 / 尼曼多店）</div>
+      <div class="card-style">創意特調・多分店</div>
+      <div class="card-time">🕗 08:00–18:00（各店略不同）</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">清邁最具創意的精品咖啡品牌，在古城、尼曼路、Baan Kang Wat 均有分店。以「感官咖啡」著稱，酪梨拿鐵、橙汁咖啡令人驚豔。Baan Kang Wat 分店獨特、建議優先造訪。</p>
+      <div class="must-order"><strong>☕ 必點</strong>酪梨拿鐵・橙汁咖啡・Baan Kang Wat 店限定檸檬塔</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=GRAPH+Cafe+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-nimman">尼曼路</span><span class="badge b-insta">打卡</span></div>
+      <div class="card-num">13</div>
+      <div class="card-name">TWENTY MAR</div>
+      <div class="card-style">復古昭和・藝術感咖啡</div>
+      <div class="card-time">🕙 10:00–18:00（週四公休）</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">清邁最受矚目的精品咖啡廳之一，⭐4.9 / 2,166則。復古昭和年代裝潢，每杯咖啡都像藝術品。招牌「Sense of Dirty」是創意泰式咖啡的代表作。座位少，氣氛靜謐。</p>
+      <div class="must-order"><strong>☕ 必點</strong>Sense of Dirty・Super Dirty・季節限定甜點</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Twenty+Mar+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-nimman">尼曼路</span><span class="badge b-matcha">抹茶專門</span></div>
+      <div class="card-num">14</div>
+      <div class="card-name">Chaseki Specialty Matcha</div>
+      <div class="card-style">頂級抹茶專門・日式靜謐</div>
+      <div class="card-time">🕙 10:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">清邁最頂級的抹茶專門店，⭐4.9 / 1,010則。提供多款不同等級的抹茶可選，店員知識豐富能詳細介紹每款差異。環境安靜適合聊天，是尼曼路上的下午茶首選。</p>
+      <div class="must-order"><strong>☕ 必點</strong>精品抹茶拿鐵・點心套組・冷泡抹茶</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Chaseki+Specialty+Matcha+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-nimman">尼曼路</span></div>
+      <div class="card-num">15</div>
+      <div class="card-name">mew.coffee.craft</div>
+      <div class="card-style">復古小物・白天咖啡廳＋夜晚酒吧</div>
+      <div class="card-time">🕙 10:00–22:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">可愛復古小物大集合！白天是精品咖啡廳，夜晚搖身一變成為有現場音樂的迷你酒吧，是尼曼路上最有趣的二合一空間。店內收藏大量復古雜貨，每個角落都有驚喜。</p>
+      <div class="must-order"><strong>☕ 必點</strong>手沖咖啡・泰北特調・夜晚試試調酒</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=mew+coffee+craft+Chiang+Mai+Nimman" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+</div>
+
+<!-- ===== 濱河區 ===== -->
+<div class="sec-hdr s-river"><span class="sec-label">🌊 濱河區 Ping River</span><div class="sec-rule"></div></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-river">濱河</span><span class="badge b-work">可工作</span><span class="badge b-wifi">免費Wi-Fi</span></div>
+      <div class="card-num">16</div>
+      <div class="card-name">Dreamtime Cafe</div>
+      <div class="card-style">50年老屋・數位遊牧天堂</div>
+      <div class="card-time">🕗 08:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">坐落萍河畔的 50 年老屋改造咖啡廳，數位遊牧族最愛。充足插座、寬敞桌面、舒適冷氣、免費快速 Wi-Fi、還附大停車場，是在清邁工作最理想的咖啡廳。河景座位在午後更顯夢幻。</p>
+      <div class="must-order"><strong>☕ 必點</strong>河景戶外座位・手沖咖啡・泰式鬆餅</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=Dreamtime+Cafe+Chiang+Mai+Ping+River" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-river">濱河</span><span class="badge b-roast">精品烘焙</span><span class="badge b-insta">打卡</span></div>
+      <div class="card-num">17</div>
+      <div class="card-name">The Baristro x Ping River</div>
+      <div class="card-style">廢棄老宅・工業風河畔</div>
+      <div class="card-time">🕗 08:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">廢棄老宅慵懶變身工業風河畔咖啡廳，是 The Baristro 品牌最具代表性的分店。大型落地窗讓陽光灑進老舊磚牆，河畔夕陽時分更是一絕。附近還有 The Baristro Coffee Roaster 烘焙工廠可順遊。</p>
+      <div class="must-order"><strong>☕ 必點</strong>泰北香草咖啡・椰子糯米蛋糕・河畔日落時段</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=The+Baristro+Ping+River+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-river">濱河</span><span class="badge b-roast">烘焙工廠</span></div>
+      <div class="card-num">18</div>
+      <div class="card-name">The Baristro Coffee Roaster</div>
+      <div class="card-style">村莊烘豆工廠・河畔秘境</div>
+      <div class="card-time">🕗 08:00–17:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">The Baristro 品牌的烘豆工廠總部，藏在濱河小村莊裡。可以看到完整的烘豆流程，比起網美分店更有深度。河畔環境幽靜，帶著書來坐一個下午也不嫌多。</p>
+      <div class="must-order"><strong>☕ 必點</strong>單品手沖・現場烘焙限定豆・導覽烘豆流程</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=The+Baristro+Coffee+Roaster+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+</div>
+
+<!-- ===== 其他區域 ===== -->
+<div class="sec-hdr s-other"><span class="sec-label">📍 其他區域</span><div class="sec-rule"></div></div>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-other">Baan Kang Wat</span><span class="badge b-roast">精品烘焙</span><span class="badge b-insta">打卡</span></div>
+      <div class="card-num">19</div>
+      <div class="card-name">GRAPH Cafe（Baan Kang Wat 店）</div>
+      <div class="card-style">藝術村秘境・頂尖精品咖啡</div>
+      <div class="card-time">🕙 10:00–17:00（週一公休）・📍 Wat Umong 附近</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">GRAPH 最具人氣的分店，藏在 Baan Kang Wat 藝術村裡。⭐4.9、號稱清邁最好喝的咖啡廳之一。一坐下來就不想離開，搭配藝術村的慢活氣氛，午後時光一秒蒸發。</p>
+      <div class="must-order"><strong>☕ 必點</strong>⭐ 必訪限量檸檬塔・藝術村限定飲品・酪梨拿鐵</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=GRAPH+Cafe+Baan+Kang+Wat+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="card-badges"><span class="badge b-other">南門附近</span></div>
+      <div class="card-num">20</div>
+      <div class="card-name">The Baristro Asian Style</div>
+      <div class="card-style">亞洲美學・打卡主題</div>
+      <div class="card-time">🕗 08:00–18:00</div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">The Baristro 品牌的亞洲美學主題分店，走打卡路線，裝潢融合蘭納傳統圖騰與現代設計。泰北香草咖啡搭配椰子糯米蛋糕是最受推薦的組合，適合下午茶時段造訪。</p>
+      <div class="must-order"><strong>☕ 必點</strong>泰北香草咖啡・椰子糯米蛋糕・亞洲風拿鐵</div>
+    </div>
+    <a class="map-btn" href="https://maps.google.com/?q=The+Baristro+Asian+Style+Chiang+Mai" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Google Maps 導航</a>
+  </div>
+
+</div>
+
+<footer>
+  ✦ 清邁咖啡廳攻略・20間精選・12月行程參考 ✦<br>
+  <span style="opacity:0.6;font-size:11px;margin-top:4px;display:block;">
+    資料來源：<a href="https://journey.tw/cafe-map-cnx/" target="_blank" style="color:var(--latte);">旅行圖中 journey.tw</a>・部分資訊整理自各店 Google Maps・實際營業時間請以各店公告為準
+  </span>
+</footer>
+
+</body>
+</html>
