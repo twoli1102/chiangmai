@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清邁夜市 & 市集攻略｜週五到週一</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night:   #0D0D0D;
+  --lantern: #E8832A;
+  --lantern-lt: #F5B460;
+  --smoke:   #1E1A16;
+  --paper:   #FAF6EE;
+  --warm:    #F0E8D8;
+  --ink:     #1A1612;
+  --muted:   #7A7060;
+  --border:  #E2D5BE;
+  --white:   #FFFFFF;
+  --fri:     #4A7C6F;
+  --fri-lt:  #E4F0ED;
+  --sat:     #7C4A6F;
+  --sat-lt:  #F0E4ED;
+  --sun:     #7C6B4A;
+  --sun-lt:  #F0EBE4;
+  --daily:   #4A5E7C;
+  --daily-lt:#E4EAF0;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--night);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(232,131,42,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 75% 20%, rgba(245,180,96,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 50% at 85% 80%, rgba(232,131,42,0.08) 0%, transparent 60%);
+}
+/* lantern shapes */
+.lanterns {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 100%;
+  pointer-events: none;
+}
+.lantern {
+  position: absolute;
+  border-radius: 50% 50% 40% 40%;
+  opacity: 0.15;
+  animation: float 4s ease-in-out infinite;
+}
+.lantern:nth-child(1) { width:40px;height:55px;background:var(--lantern);left:8%;top:12%;animation-delay:0s; }
+.lantern:nth-child(2) { width:30px;height:42px;background:var(--lantern-lt);left:22%;top:28%;animation-delay:0.8s; }
+.lantern:nth-child(3) { width:50px;height:68px;background:var(--lantern);left:55%;top:8%;animation-delay:1.5s; }
+.lantern:nth-child(4) { width:28px;height:38px;background:var(--lantern-lt);left:70%;top:35%;animation-delay:0.4s; }
+.lantern:nth-child(5) { width:38px;height:52px;background:var(--lantern);left:88%;top:15%;animation-delay:2s; }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.hero-content {
+  position: relative;
+  padding: 48px 24px 40px;
+}
+.hero-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--lantern-lt);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before { content: ''; display:block; width:24px; height:1px; background:var(--lantern); }
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(28px, 7vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.hero h1 em { font-style:normal; color:var(--lantern-lt); }
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* ── DAY PILLS ── */
+.day-nav {
+  display: flex;
+  gap: 8px;
+  padding: 20px 20px 0;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.day-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.pill-fri  { background:var(--fri-lt);  border-color:var(--fri);  color:var(--fri); }
+.pill-sat  { background:var(--sat-lt);  border-color:var(--sat);  color:var(--sat); }
+.pill-sun  { background:var(--sun-lt);  border-color:var(--sun);  color:var(--sun); }
+.pill-daily{ background:var(--daily-lt);border-color:var(--daily);color:var(--daily);}
+.day-pill:hover { filter: brightness(0.92); }
+
+/* ── SECTION ── */
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 36px 20px 0;
+}
+.section-hd {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.section-day {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.day-fri  .section-day { background:var(--fri);  color:#fff; }
+.day-sat  .section-day { background:var(--sat);  color:#fff; }
+.day-sun  .section-day { background:var(--sun);  color:#fff; }
+.day-daily.section-day,
+.daily-section .section-day { background:var(--daily);color:#fff; }
+.section-rule { flex:1; height:1px; background:var(--border); }
+
+/* ── MARKET CARDS ── */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+
+.mcard {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.mcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+}
+.mcard-top {
+  padding: 18px 18px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.mcard-badges { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.badge-fri  { background:var(--fri-lt);  color:var(--fri); }
+.badge-sat  { background:var(--sat-lt);  color:var(--sat); }
+.badge-sun  { background:var(--sun-lt);  color:var(--sun); }
+.badge-daily{ background:var(--daily-lt);color:var(--daily); }
+.badge-food { background:#FEF3E2; color:#A0510A; }
+.badge-craft{ background:#EEF3FE; color:#2A4A8A; }
+.badge-live { background:#F3FEEE; color:#2A6A20; }
+
+.mcard-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+.mcard-name-en { font-size: 12px; color: var(--muted); font-weight: 400; }
+.mcard-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--lantern);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.mcard-body { padding: 14px 18px; flex:1; display:flex; flex-direction:column; gap:10px; }
+.mcard-desc { font-size: 13px; color: #4A4035; line-height: 1.7; }
+
+.mcard-tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag {
+  font-size: 11px;
+  background: var(--warm);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.pros, .cons {
+  border-radius: 8px;
+  padding: 9px 10px;
+}
+.pros { background: #EDF5EE; }
+.cons { background: #FDF1EF; }
+.pc-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.pros .pc-title { color: #2A6A20; }
+.cons .pc-title { color: #8A2A20; }
+.pc-item {
+  font-size: 11.5px;
+  line-height: 1.55;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+.pros .pc-item::before { content:'+'; color:#2A6A20; font-weight:700; flex-shrink:0; }
+.cons .pc-item::before { content:'−'; color:#8A2A20; font-weight:700; flex-shrink:0; }
+
+.must-try {
+  background: linear-gradient(135deg, #FFF8EE, #FFF0D6);
+  border-left: 3px solid var(--lantern);
+  border-radius: 0 8px 8px 0;
+  padding: 9px 11px;
+  font-size: 12px;
+  color: #6B4A10;
+  line-height: 1.6;
+}
+.must-try strong { display:block; font-size:9px; text-transform:uppercase; letter-spacing:0.1em; opacity:0.65; margin-bottom:3px; }
+
+.map-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0 18px 18px;
+  padding: 10px;
+  background: var(--smoke);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.map-btn:hover { background: #000; }
+.map-btn svg { width:14px; height:14px; }
+
+/* ── SCHEDULE TABLE ── */
+.table-section {
+  max-width: 1000px;
+  margin: 48px auto 0;
+  padding: 0 20px 60px;
+}
+.tbl-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 13px;
+  min-width: 600px;
+}
+thead th {
+  padding: 12px 14px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--smoke);
+  color: #fff;
+  white-space: nowrap;
+}
+thead th:first-child { text-align:left; }
+tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  vertical-align: middle;
+  font-size: 13px;
+}
+tbody td:first-child { text-align:left; font-weight:500; background: var(--warm); font-size:12px; }
+tbody tr:last-child td { border-bottom:none; }
+.ck { color: #2A7A30; font-size: 16px; font-weight: 700; }
+.xx { color: #ccc; font-size: 14px; }
+.highlight { background: #FFFBF2 !important; }
+
+footer {
+  text-align:center;
+  padding: 28px 20px;
+  font-size:12px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+}
+
+@media (max-width:480px) {
+  .pros-cons { grid-template-columns:1fr; }
+  .cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="lanterns">
+    <div class="lantern"></div><div class="lantern"></div><div class="lantern"></div>
+    <div class="lantern"></div><div class="lantern"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">清邁 Chiang Mai · 市集攻略</p>
+    <h1>夜市 &amp; 市集<em>完整指南</em></h1>
+    <p class="hero-sub">週五到週一有開放的所有市集・包含開放時間、必吃推薦、優缺點與 Google Maps 導航</p>
+  </div>
+</header>
+
+<!-- DAY PILLS -->
+<div class="day-nav">
+  <span class="day-pill pill-fri">🟢 週五 Friday</span>
+  <span class="day-pill pill-sat">🟣 週六 Saturday</span>
+  <span class="day-pill pill-sun">🟡 週日 Sunday</span>
+  <span class="day-pill pill-daily">🔵 每天開放 Daily</span>
+</div>
+
+<!-- ===== 週六限定 ===== -->
+<div class="section">
+  <div class="section-hd day-sat">
+    <span class="section-day">週六 Saturday</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="cards">
+
+    <!-- Wua Lai -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-sat">僅週六</span>
+          <span class="badge badge-craft">手工藝</span>
+          <span class="badge badge-food">美食</span>
+        </div>
+        <div class="mcard-name">週六步行街<span class="mcard-name-en"> Wua Lai Walking Street</span></div>
+        <div class="mcard-time">🕕 18:00 – 23:00</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">清邁最有在地感的步行夜市，整條 Wua Lai Road 封街，古城南門外徒步即達。以蘭納銀器工藝聞名，是全清邁買銀飾最好的地方，也有北泰傳統美食攤位散落其中。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 古城南門外</span>
+          <span class="tag">🚶 步行可達</span>
+          <span class="tag">⭐ 4.5 / 7,840則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">銀器工藝最道地</div>
+            <div class="pc-item">觀光客比Sunday少</div>
+            <div class="pc-item">古城步行5分鐘</div>
+            <div class="pc-item">在地感強、攤位獨特</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">僅週六一次</div>
+            <div class="pc-item">規模比週日小</div>
+            <div class="pc-item">銀器價格偏高</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必吃 / 必買</strong>手工銀環・北泰香腸 Sai Ua・炸咖哩角・烤香蕉煎餅 Roti</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Wua+Lai+Walking+Street+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- Jing Jai Weekend -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-sat">週六</span>
+          <span class="badge badge-sun">週日</span>
+          <span class="badge badge-food">農產市場</span>
+        </div>
+        <div class="mcard-name">Jing Jai Weekend Market<span class="mcard-name-en"> (JJ Market)</span></div>
+        <div class="mcard-time">🕕 早上 06:00 – 14:00</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">週末限定的農夫市集，清晨開市、下午收攤，販售有機蔬果、在地農產品、咖啡、手工藝品與二手古著。氣氛輕鬆，深受老外和在地人喜愛，適合悠閒的週末早晨。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 古城北方 Chotana Road</span>
+          <span class="tag">🛺 需搭車</span>
+          <span class="tag">⭐ 4.4 / 4,200則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">有機農產品新鮮便宜</div>
+            <div class="pc-item">清晨涼爽氣氛好</div>
+            <div class="pc-item">文青咖啡攤位多</div>
+            <div class="pc-item">觀光味不重</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">早上限定、下午收攤</div>
+            <div class="pc-item">距古城需搭車</div>
+            <div class="pc-item">規模較小</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必吃 / 必買</strong>現煮精品咖啡・有機酪梨吐司・新鮮芒果・手工果醬</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Jing+Jai+Market+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 週日限定 ===== -->
+<div class="section">
+  <div class="section-hd day-sun">
+    <span class="section-day">週日 Sunday</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="cards">
+
+    <!-- Sunday Walking Street -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-sun">僅週日</span>
+          <span class="badge badge-craft">手工藝</span>
+          <span class="badge badge-live">現場音樂</span>
+        </div>
+        <div class="mcard-name">週日步行街<span class="mcard-name-en"> Sunday Walking Street</span></div>
+        <div class="mcard-time">🕔 16:00 – 22:00（建議 17:00 前到）</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">清邁最盛大的步行市集，整條 Ratchadamnoen Road 封街超過 1 公里，從塔佩門延伸至古城深處。手工藝品、佛像木雕、泰式服裝、街頭小吃一字排開，沿途還有寺廟點燈與街頭表演，是來清邁最不能錯過的體驗。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 古城 Ratchadamnoen Rd</span>
+          <span class="tag">🚶 步行可達</span>
+          <span class="tag">⭐ 4.5 / 15,000+則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">規模最大、品項最多</div>
+            <div class="pc-item">手工藝品最齊全</div>
+            <div class="pc-item">沿途寺廟夜間點燈</div>
+            <div class="pc-item">街頭表演豐富</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">人潮最多最擁擠</div>
+            <div class="pc-item">僅週日一次</div>
+            <div class="pc-item">禁止飲酒（可被罰款）</div>
+            <div class="pc-item">晚來攤位少、人更擠</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必吃 / 必買</strong>椰子冰淇淋・芒果糯米飯・手工藍染布・現場按摩（200 泰銖起）</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Sunday+Walking+Street+Chiang+Mai+Ratchadamnoen" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- JJ Market Sunday already shown above, shown as combined Sat/Sun -->
+
+  </div>
+</div>
+
+
+<!-- ===== 週六＋週日 特色市集 ===== -->
+<div class="section">
+  <div class="section-hd" style="">
+    <span class="section-day" style="background:#6A3F7A;color:#fff;">週六＋週日 特色市集</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="cards">
+
+    <!-- Baan Kang Wat -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-sat">週二～週日</span>
+          <span class="badge badge-art">藝術村</span>
+          <span class="badge badge-craft">手工藝</span>
+        </div>
+        <div class="mcard-name">班康瓦藝術村<span class="mcard-name-en"> Baan Kang Wat</span></div>
+        <div class="mcard-time">🕚 10:00–18:00（週一公休）・週日早市 08:00–13:00</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">藏在 Wat Umong 寺旁的藝術家村落，由半木造老房子圍繞中庭組成，賣的全是在地藝術家的手作陶器、蠟染、木工、珠寶與咖啡。氣氛極度文青靜謐，每週日早上加開農夫早市，有機蔬果、手作起司、現場民謠演唱。裡面的 Graph Cafe 更是清邁評分最高的咖啡廳之一（⭐4.9）。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 Soi Wat Umong，距古城約 8–10km</span>
+          <span class="tag">🛺 需搭 Grab</span>
+          <span class="tag">⭐ 4.7 / 3,800則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">全清邁最有質感藝術氛圍</div>
+            <div class="pc-item">Graph Cafe 就在裡面</div>
+            <div class="pc-item">週六週日皆開放</div>
+            <div class="pc-item">免費入場，手作品獨一無二</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">距古城遠，需搭車 15–20 分鐘</div>
+            <div class="pc-item">規模小，逛完約 1 小時</div>
+            <div class="pc-item">價格是「作者訂價」偏貴</div>
+            <div class="pc-item">部分店家隨性休息</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必訪</strong>Graph Cafe 檸檬塔・手作陶杯・蠟染棉麻包・週日早市有機咖啡</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Baan+Kang+Wat+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- Chamcha Market -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-sat">週六</span>
+          <span class="badge badge-sun">週日</span>
+          <span class="badge badge-craft">手工藝</span>
+          <span class="badge badge-live">現場音樂</span>
+        </div>
+        <div class="mcard-name">Chamcha Market<span class="mcard-name-en"> 柴差市集</span></div>
+        <div class="mcard-time">🕘 09:00–14:00（週六・週日，以及國定假日）</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">藏在 San Kamphaeng 社區的週末限定手作市集，距古城約 30 分鐘車程。約 30 個攤位全是在地手作人，主打扎染服裝、民族風配件、陶器、植物香氛，觀光味極低。旁邊有可愛咖啡廳和獨特的「Bus Pizza」——一台改裝復古巴士餐廳，屋頂還有座位能俯瞰整個市集。也有現場民謠演奏加分。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 San Kamphaeng，距古城約 30 分鐘</span>
+          <span class="tag">🛺 需搭車</span>
+          <span class="tag">⭐ 4.5 / 800則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">最無觀光感的在地市集</div>
+            <div class="pc-item">手作品獨特且物超所值</div>
+            <div class="pc-item">Bus Pizza 超獨特拍照必去</div>
+            <div class="pc-item">現場音樂氛圍輕鬆</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">距市中心很遠（30 分鐘+）</div>
+            <div class="pc-item">規模小（僅約 30 攤）</div>
+            <div class="pc-item">只開到下午 2 點</div>
+            <div class="pc-item">停車規劃較混亂</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必訪</strong>Bus Pizza 巴士餐廳屋頂座位・扎染棉麻服飾・手工銀飾・現榨草本果汁</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Chamcha+Market+San+Kamphaeng+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 每天開放 ===== -->
+<div class="section">
+  <div class="section-hd daily-section">
+    <span class="section-day" style="background:var(--daily);color:#fff;">每天開放 Daily</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="cards">
+
+    <!-- Night Bazaar -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-daily">每天</span>
+          <span class="badge badge-food">美食</span>
+          <span class="badge badge-craft">購物</span>
+        </div>
+        <div class="mcard-name">清邁夜市<span class="mcard-name-en"> Chiang Mai Night Bazaar</span></div>
+        <div class="mcard-time">🕔 17:00 – 23:00（部分攤至凌晨）</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">清邁最知名的老字號夜市，沿 Chang Klan Road 延伸數百公尺，是觀光客最容易找到的夜市。紀念品、手工藝品、服飾、海鮮燒烤通通有，旁邊還有 Kalare 夜市與 Anusarn 市場相連。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 Chang Klan Road</span>
+          <span class="tag">🛺 需搭車</span>
+          <span class="tag">⭐ 4.3 / 26,000+則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">每天開放最方便</div>
+            <div class="pc-item">品項最齊全</div>
+            <div class="pc-item">旁邊連接多個市場</div>
+            <div class="pc-item">交通方便</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">觀光味重、議價空間少</div>
+            <div class="pc-item">商品重複性高</div>
+            <div class="pc-item">距古城需搭車</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必吃 / 必買</strong>海鮮燒烤・大明蝦・炒河粉・大象圖案商品</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Chiang+Mai+Night+Bazaar" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- Chang Puak Gate -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-daily">每天</span>
+          <span class="badge badge-food">街頭美食</span>
+        </div>
+        <div class="mcard-name">北門夜市<span class="mcard-name-en"> Chang Puak Gate Food Stalls</span></div>
+        <div class="mcard-time">🕔 17:00 – 24:00</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">古城北門外的平民街頭美食聖地，主打在地小吃。最著名的是「牛仔帽阿姨」的豬腳飯，每天吸引大批饕客排隊。塑膠椅、鐵皮桌、煙霧裊裊，卻是清邁最真實的夜宵文化。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 古城北門 Chang Puak</span>
+          <span class="tag">🚶 步行可達（北門飯店）</span>
+          <span class="tag">⭐ 4.4 / 9,800則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">最道地的在地美食</div>
+            <div class="pc-item">超平價（50-100泰銖/份）</div>
+            <div class="pc-item">古城北門步行可達</div>
+            <div class="pc-item">每天開放</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">純美食、無購物</div>
+            <div class="pc-item">座位少、需等待</div>
+            <div class="pc-item">環境簡陋</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必吃</strong>牛仔帽豬腳飯 Khao Kha Moo・北泰香腸・炸雞翅・酸辣湯</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Chang+Puak+Gate+Food+Market+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- Ploen Ruedee -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-daily">每天</span>
+          <span class="badge badge-live">現場音樂</span>
+          <span class="badge badge-food">美食</span>
+        </div>
+        <div class="mcard-name">Ploen Ruedee<span class="mcard-name-en"> Night Market</span></div>
+        <div class="mcard-time">🕔 17:00 – 23:00</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">燈串圍繞的開放式夜市，每晚都有現場樂團演出，是清邁最適合慢悠悠吃飯喝飲料的地方。結合泰式與國際美食，餐桌間距寬敞，適合和朋友坐下來好好聊天。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 Chang Klan Rd 夜市旁</span>
+          <span class="tag">🎵 現場音樂</span>
+          <span class="tag">⭐ 4.3 / 6,500則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">每晚現場音樂演奏</div>
+            <div class="pc-item">舒適有氣氛</div>
+            <div class="pc-item">座位寬敞好坐</div>
+            <div class="pc-item">泰式+國際料理</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">購物選擇少</div>
+            <div class="pc-item">價格比街頭貴</div>
+            <div class="pc-item">距古城需搭車</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 推薦</strong>現場樂團演奏・泰式炒河粉・芒果冰沙・本地啤酒 Chang Beer</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Ploen+Ruedee+Night+Market+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- Warorot -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-daily">每天</span>
+          <span class="badge badge-food">在地市場</span>
+        </div>
+        <div class="mcard-name">華洛洛市場<span class="mcard-name-en"> Warorot Market (Kad Luang)</span></div>
+        <div class="mcard-time">🌅 06:00 – 18:00（夜間攤位延伸至 22:00）</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">清邁最老的傳統市場，清晨就開始有小販聚集。乾貨、香料、布料、各式零食通通有。鄰近 Ton Lamyai 花市，建議早上去感受最正宗的在地生活氛圍。晚上外圍也有攤販延伸。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 濱河 Ping River 旁</span>
+          <span class="tag">🛺 需搭車</span>
+          <span class="tag">⭐ 4.2 / 11,200則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">最道地、無觀光包裝</div>
+            <div class="pc-item">乾貨零食伴手禮便宜</div>
+            <div class="pc-item">早開市、可配早行程</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">主要是白天市場</div>
+            <div class="pc-item">距古城需搭車</div>
+            <div class="pc-item">語言溝通較難</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 必買</strong>北泰辣椒醬・乾燥芒果・泰式奶茶粉・香茅香皂</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Warorot+Market+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- One Nimman -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-daily">每天</span>
+          <span class="badge badge-craft">精品</span>
+        </div>
+        <div class="mcard-name">One Nimman<span class="mcard-name-en"> White Market</span></div>
+        <div class="mcard-time">🕚 10:00 – 22:00</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">尼曼路旁的歐式風格廣場市集，白色建築為主，結合精品店、文青咖啡廳與手工藝品攤。夜晚燈光迷人，適合拍照打卡。偏精品路線，攤位質感高但價格也相對高。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 尼曼路 Nimman Soi 1</span>
+          <span class="tag">🚶 尼曼路步行可達</span>
+          <span class="tag">⭐ 4.5 / 5,400則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">拍照打卡超美</div>
+            <div class="pc-item">每天開放</div>
+            <div class="pc-item">緊鄰尼曼文青區</div>
+            <div class="pc-item">品質精緻不俗</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">價格偏高</div>
+            <div class="pc-item">距古城需搭車</div>
+            <div class="pc-item">規模較小</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 推薦</strong>手工香氛蠟燭・精品皮革小物・網美甜點・泰北植物茶</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=One+Nimman+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+    <!-- Ton Lamyai Flower Market -->
+    <div class="mcard">
+      <div class="mcard-top">
+        <div class="mcard-badges">
+          <span class="badge badge-daily">24小時</span>
+        </div>
+        <div class="mcard-name">Ton Lamyai 花市<span class="mcard-name-en"> Flower Market</span></div>
+        <div class="mcard-time">🌙 24小時（夜間 22:00–04:00 最美）</div>
+      </div>
+      <div class="mcard-body">
+        <p class="mcard-desc">清邁最夢幻的市場，24 小時不打烊。蘭花、玫瑰、金盞花、茉莉花串堆滿整個市場，夜間點燈後更如夢似幻。就算不買花，純粹散步感受花香與視覺衝擊都值得。</p>
+        <div class="mcard-tags">
+          <span class="tag">📍 濱河 Warorot 旁</span>
+          <span class="tag">📸 拍照聖地</span>
+          <span class="tag">⭐ 4.4 / 3,200則</span>
+        </div>
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pc-title">優點</div>
+            <div class="pc-item">24 小時開放</div>
+            <div class="pc-item">夜間氛圍絕美</div>
+            <div class="pc-item">拍照 IG 打卡必訪</div>
+            <div class="pc-item">花價便宜</div>
+          </div>
+          <div class="cons">
+            <div class="pc-title">缺點</div>
+            <div class="pc-item">純花卉市場</div>
+            <div class="pc-item">距古城需搭車</div>
+            <div class="pc-item">無法帶花回台（海關）</div>
+          </div>
+        </div>
+        <div class="must-try"><strong>🔥 推薦</strong>夜間 22:00 後入場・蘭花攝影・茉莉花串（獻佛用）・花市牛奶冰</div>
+      </div>
+      <a class="map-btn" href="https://maps.google.com/?q=Ton+Lamyai+Flower+Market+Chiang+Mai" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Google Maps 導航
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 對照表 ===== -->
+<div class="table-section">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+    <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);">📅 開放日一覽表</span>
+    <div style="flex:1;height:1px;background:var(--border);"></div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>市集名稱</th>
+          <th>週五<br>12/19</th>
+          <th>週六<br>12/20</th>
+          <th>週日<br>12/21</th>
+          <th>週一<br>12/22</th>
+          <th>時間</th>
+          <th>重點特色</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>🟣 週六步行街 Wua Lai</td>
+          <td class="xx">–</td>
+          <td class="ck">✓</td>
+          <td class="xx">–</td>
+          <td class="xx">–</td>
+          <td>18:00–23:00</td>
+          <td>銀器・在地工藝</td>
+        </tr>
+        <tr>
+          <td>🟡 週日步行街 Sunday</td>
+          <td class="xx">–</td>
+          <td class="xx">–</td>
+          <td class="ck">✓</td>
+          <td class="xx">–</td>
+          <td>16:00–22:00</td>
+          <td>最大規模・手工藝</td>
+        </tr>
+        <tr>
+          <td>🟢 JJ Weekend Market</td>
+          <td class="xx">–</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="xx">–</td>
+          <td>06:00–14:00</td>
+          <td>有機農產・早市</td>
+        </tr>
+        <tr>
+          <td>🔵 清邁夜市 Night Bazaar</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td>17:00–23:00</td>
+          <td>最全面・觀光首選</td>
+        </tr>
+        <tr>
+          <td>🔵 北門夜市 Chang Puak</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td>17:00–24:00</td>
+          <td>牛仔帽豬腳飯・在地美食</td>
+        </tr>
+        <tr>
+          <td>🔵 Ploen Ruedee</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td>17:00–23:00</td>
+          <td>現場音樂・悠閒用餐</td>
+        </tr>
+        <tr>
+          <td>🔵 華洛洛市場 Warorot</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td>06:00–18:00</td>
+          <td>伴手禮・乾貨香料</td>
+        </tr>
+        <tr>
+          <td>🔵 One Nimman White Market</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td>10:00–22:00</td>
+          <td>文青精品・打卡拍照</td>
+        </tr>
+        <tr>
+          <td>🔵 Ton Lamyai 花市</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td>24小時</td>
+          <td>花市夜景・IG打卡</td>
+        </tr>
+        <tr class="highlight">
+          <td>🎨 Baan Kang Wat 藝術村</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓ +早市</td>
+          <td class="xx">休</td>
+          <td>10:00–18:00<br><small>週日早市 08:00–13:00</small></td>
+          <td>藝術村・Graph Cafe・手作陶</td>
+        </tr>
+        <tr class="highlight">
+          <td>🎨 Chamcha Market 柴差市集</td>
+          <td class="xx">–</td>
+          <td class="ck">✓</td>
+          <td class="ck">✓</td>
+          <td class="xx">–</td>
+          <td>09:00–14:00</td>
+          <td>扎染手作・Bus Pizza・無觀光感</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tips -->
+  <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;">
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;">
+      <div style="font-size:20px;margin-bottom:6px;">💡</div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px;">帶現金小鈔</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">多數攤販不收信用卡，建議換好 20–100 泰銖小鈔，方便購物與議價。</div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;">
+      <div style="font-size:20px;margin-bottom:6px;">👟</div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px;">穿舒適的鞋</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">週日步行街超過 1 公里，其他市集也需久站，建議穿涼鞋或運動鞋。</div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;">
+      <div style="font-size:20px;margin-bottom:6px;">🕔</div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px;">提早到最好</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">週日步行街建議 17:00 前到，攤位最齊、人潮最少，天色也最美。</div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;">
+      <div style="font-size:20px;margin-bottom:6px;">🍺</div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px;">週日禁止路上飲酒</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">Ratchadamnoen Road 週日禁止攜帶酒類，違者可罰款 10,000 泰銖！</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  ✦ 清邁夜市 & 市集攻略・12/18–12/22 行程參考 ✦<br>
+  <span style="opacity:0.6;font-size:11px;margin-top:4px;display:block;">開放時間以現場公告為準・資料整理自 Thrillark、Thailand Routes、Thailand Awaits</span>
+</footer>
+
+</body>
+</html>
