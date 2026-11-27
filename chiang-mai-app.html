@@ -145,6 +145,18 @@ body {
 .ref-text small { font-size: 11px; color: var(--muted); }
 .ref-arrow { font-size: 20px; color: var(--muted); }
 
+/* ── FX ── */
+.fx-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px; }
+.fx-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; text-decoration: none; color: var(--ink); }
+.fx-item:active { background: var(--teal-lt); }
+.fx-main strong { display: block; font-size: 14px; }
+.fx-main span { font-size: 11px; color: var(--muted); }
+.fx-side { font-size: 16px; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.fx-side em { font-style: normal; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+.fx-open { background: var(--green-lt); color: var(--green); }
+.fx-closed { background: var(--red-lt); color: var(--red); }
+.fx-tip { font-size: 11px; color: var(--muted); line-height: 1.6; padding: 2px 4px; }
+
 /* ── ITINERARY ── */
 .day-tabs {
   display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto;
@@ -351,7 +363,7 @@ body {
       <div class="hotel-name">Le Naview Phra Singh</div>
       <div class="hotel-detail">
         📍 古城內・帕辛寺步行 8 分鐘<br>
-        🗓 入住 12/18（週三）・退房 12/22（週日）<br>
+        🗓 入住 12/18（週五）・退房 12/22（週二）<br>
         ☎️ +66 53 327 444<br>
         ⭐ 9.2 / 10・含泳池・停車場
       </div>
@@ -371,14 +383,44 @@ body {
       <span class="ref-text"><strong>咖啡廳清單</strong><small>20 間精選、必點推薦</small></span>
       <span class="ref-arrow">›</span>
     </a>
+    <a class="ref-link" href="https://www.klook.com/zh-TW/activity/6936-grandmas-home-cooking-school-chiang-mai/" target="_blank" rel="noopener">
+      <span class="ref-icon">🍳</span>
+      <span class="ref-text"><strong>烹飪課報名頁（12/21 上午）</strong><small>Klook・Grandma's Home Cooking School</small></span>
+      <span class="ref-arrow">›</span>
+    </a>
+  </div>
+
+  <div class="sec-hdr">💱 換匯地點</div>
+  <div class="fx-list">
+    <a class="fx-item" href="https://www.google.com/maps/place/?q=place_id:ChIJBZgqaqQ62jARUkfIB3rjpJE" target="_blank" rel="noopener">
+      <div class="fx-main"><strong>Mr. Pierre</strong><span>塔佩門・09:00–18:00</span></div>
+      <div class="fx-side"><em class="fx-closed">週日休</em>📍</div>
+    </a>
+    <a class="fx-item" href="https://www.google.com/maps/place/?q=place_id:ChIJtcTn5KI62jARCW07OQXL_U8" target="_blank" rel="noopener">
+      <div class="fx-main"><strong>VK Exchange（古城）</strong><span>塔佩門附近・09:00–18:00</span></div>
+      <div class="fx-side"><em class="fx-open">週日開</em>📍</div>
+    </a>
+    <a class="fx-item" href="https://www.google.com/maps/place/?q=place_id:ChIJLUpC5KU62jARYYtDHlKYsAk" target="_blank" rel="noopener">
+      <div class="fx-main"><strong>VK Exchange（Chang Klan）</strong><span>夜市・10:00–19:30</span></div>
+      <div class="fx-side"><em class="fx-closed">週日休</em>📍</div>
+    </a>
+    <a class="fx-item" href="https://www.google.com/maps/place/?q=place_id:ChIJOe7Z7Kg62jAR1s7WApdVKd8" target="_blank" rel="noopener">
+      <div class="fx-main"><strong>SK Exchange</strong><span>夜市・09:00–17:00</span></div>
+      <div class="fx-side"><em class="fx-closed">週日休</em>📍</div>
+    </a>
+    <a class="fx-item" href="https://www.google.com/maps/place/?q=place_id:ChIJg0biMaE62jARepIN9ujHUJY" target="_blank" rel="noopener">
+      <div class="fx-main"><strong>Nakhonping Exchange 👍</strong><span>夜市・09:00–22:00</span></div>
+      <div class="fx-side"><em class="fx-open">每天開</em>📍</div>
+    </a>
+    <div class="fx-tip">換匯要帶護照，鈔票要新。12/20 是週日，只有 VK（古城）和 Nakhonping 有開。來源：清邁廢氏 2026 找換店名單。</div>
   </div>
 
   <div class="sec-hdr">🗓 行程</div>
   <div class="day-tabs">
     <div class="day-tab active" onclick="switchDay(0)">12/18 抵達</div>
-    <div class="day-tab" onclick="switchDay(1)">12/19 週四</div>
-    <div class="day-tab" onclick="switchDay(2)">12/20 週五</div>
-    <div class="day-tab" onclick="switchDay(3)">12/21 週六</div>
+    <div class="day-tab" onclick="switchDay(1)">12/19 週六</div>
+    <div class="day-tab" onclick="switchDay(2)">12/20 週日</div>
+    <div class="day-tab" onclick="switchDay(3)">12/21 週一</div>
     <div class="day-tab" onclick="switchDay(4)">12/22 返程</div>
   </div>
 
@@ -451,7 +493,7 @@ body {
       <div class="stop-body">
         <div class="stop-time">15:00</div>
         <div class="stop-name">TWENTY MAR 下午茶</div>
-        <div class="stop-note">⭐4.9・復古昭和風・招牌 Sense of Dirty（週四公休請確認）</div>
+        <div class="stop-note">⭐4.9・復古昭和風・招牌 Sense of Dirty（週四公休，12/19 週六可去）</div>
         <span class="stop-tag t-cafe">咖啡廳</span>
         <a class="stop-map" href="https://maps.google.com/?q=Twenty+Mar+Chiang+Mai" target="_blank">📍 地圖</a>
       </div>
@@ -459,7 +501,7 @@ body {
     <div class="stop">
       <div class="stop-dot">🏛️</div>
       <div class="stop-body">
-        <div class="stop-time">17:00</div>
+        <div class="stop-time">16:30</div>
         <div class="stop-name">塔佩門 Tha Phae Gate</div>
         <div class="stop-note">打卡地標，夕陽時分最美</div>
         <span class="stop-tag t-sight">地標</span>
@@ -467,13 +509,23 @@ body {
       </div>
     </div>
     <div class="stop">
+      <div class="stop-dot">🍜</div>
+      <div class="stop-body">
+        <div class="stop-time">17:30</div>
+        <div class="stop-name">CHUM Northern Kitchen @Old City</div>
+        <div class="stop-note">⭐4.6（1,200+則）・北泰料理・每日 10:30–20:00，建議 17:30 入座（接近打烊較易客滿/收單）</div>
+        <span class="stop-tag t-food">晚餐</span>
+        <a class="stop-map" href="https://www.google.com/maps/place/?q=place_id:ChIJPZe2-aE72jARGFwpqLCzNdU" target="_blank">📍 地圖</a>
+      </div>
+    </div>
+    <div class="stop">
       <div class="stop-dot">🌙</div>
       <div class="stop-body">
         <div class="stop-time">19:00</div>
-        <div class="stop-name">清邁夜市 Night Bazaar</div>
-        <div class="stop-note">晚餐邊逛邊吃，預算約 200–400 泰銖</div>
-        <span class="stop-tag t-food">晚餐</span><span class="stop-tag t-market">夜市</span>
-        <a class="stop-map" href="https://maps.google.com/?q=Chiang+Mai+Night+Bazaar" target="_blank">📍 地圖</a>
+        <div class="stop-name">週六步行街 Wua Lai Walking Street</div>
+        <div class="stop-note">⚠️ 僅週六 18:00–23:00・銀器工藝・小吃點心，晚餐後邊逛邊吃</div>
+        <span class="stop-tag t-food">小吃</span><span class="stop-tag t-market">週六限定</span>
+        <a class="stop-map" href="https://maps.google.com/?q=Wua+Lai+Walking+Street+Chiang+Mai" target="_blank">📍 地圖</a>
       </div>
     </div>
   </div>
@@ -491,19 +543,29 @@ body {
       </div>
     </div>
     <div class="stop">
-      <div class="stop-dot">🐘</div>
+      <div class="stop-dot">🛍️</div>
       <div class="stop-body">
-        <div class="stop-time">08:00–17:00</div>
-        <div class="stop-name">大象自然公園 Elephant Nature Park</div>
-        <div class="stop-note">⚠️ 需提前官網預訂！全日票 ~2,500–3,000 泰銖，含接送。⭐4.8</div>
-        <span class="stop-tag t-sight">體驗</span>
-        <a class="stop-map" href="https://maps.google.com/?q=Elephant+Nature+Park+Chiang+Mai" target="_blank">📍 地圖</a>
+        <div class="stop-time">10:30</div>
+        <div class="stop-name">Maya Lifestyle Shopping Center（尼曼路）</div>
+        <div class="stop-note">清邁最大潮流商場，服飾、美妝、伴手禮，室內冷氣好逛；旁邊就是 One Nimman 文創小街</div>
+        <span class="stop-tag t-market">逛街</span>
+        <a class="stop-map" href="https://maps.google.com/?q=Maya+Lifestyle+Shopping+Center+Chiang+Mai" target="_blank">📍 地圖</a>
+      </div>
+    </div>
+    <div class="stop">
+      <div class="stop-dot">🍜</div>
+      <div class="stop-body">
+        <div class="stop-time">12:30</div>
+        <div class="stop-name">尼曼區午餐</div>
+        <div class="stop-note">在 Maya／One Nimman 周邊自選（小巷咖啡廳、泰菜很多）</div>
+        <span class="stop-tag t-food">午餐</span>
+        <a class="stop-map" href="https://maps.google.com/?q=Nimman+Chiang+Mai+restaurants" target="_blank">📍 地圖</a>
       </div>
     </div>
     <div class="stop">
       <div class="stop-dot">☕</div>
       <div class="stop-body">
-        <div class="stop-time">18:00</div>
+        <div class="stop-time">14:00</div>
         <div class="stop-name">Ristr8to Original（尼曼路）</div>
         <div class="stop-note">世界拉花冠軍・清邁精品咖啡 OG ⭐4.6</div>
         <span class="stop-tag t-cafe">下午茶</span>
@@ -511,13 +573,23 @@ body {
       </div>
     </div>
     <div class="stop">
-      <div class="stop-dot">🍽️</div>
+      <div class="stop-dot">🧺</div>
       <div class="stop-body">
-        <div class="stop-time">19:30</div>
-        <div class="stop-name">Riverfront Restaurant 晚餐</div>
-        <div class="stop-note">河畔海鮮餐廳，有現場音樂，燈光浪漫 ⭐4.7</div>
-        <span class="stop-tag t-food">晚餐</span>
-        <a class="stop-map" href="https://maps.google.com/?q=Riverfront+Restaurant+Chiang+Mai" target="_blank">📍 地圖</a>
+        <div class="stop-time">15:30</div>
+        <div class="stop-name">瓦洛洛市場 Warorot Market＋花市</div>
+        <div class="stop-note">在地人傳統市場，泰北香腸、零食、布料；旁邊 Ton Lamyai 花市（週日營業，約 18:00 前較完整）</div>
+        <span class="stop-tag t-market">市集</span>
+        <a class="stop-map" href="https://maps.google.com/?q=Warorot+Market+Chiang+Mai" target="_blank">📍 地圖</a>
+      </div>
+    </div>
+    <div class="stop">
+      <div class="stop-dot">🌙</div>
+      <div class="stop-body">
+        <div class="stop-time">17:30</div>
+        <div class="stop-name">週日步行街 Sunday Walking Street</div>
+        <div class="stop-note">⚠️ 僅週日約 16:00–22:00・拉差丹能路（從塔佩門到帕辛寺）・手作、小吃，邊逛邊吃當晚餐</div>
+        <span class="stop-tag t-food">晚餐</span><span class="stop-tag t-market">週日限定</span>
+        <a class="stop-map" href="https://maps.google.com/?q=Sunday+Walking+Street+Chiang+Mai" target="_blank">📍 地圖</a>
       </div>
     </div>
   </div>
@@ -527,51 +599,41 @@ body {
     <div class="stop">
       <div class="stop-dot">🍳</div>
       <div class="stop-body">
-        <div class="stop-time">07:00</div>
-        <div class="stop-name">Chiang Mai Breakfast World</div>
-        <div class="stop-note">花園環境，德式全英式早餐超澎湃 ⭐4.3</div>
-        <span class="stop-tag t-food">早餐</span>
-        <a class="stop-map" href="https://maps.google.com/?q=Chiang+Mai+Breakfast+World" target="_blank">📍 地圖</a>
+        <div class="stop-time">上午（半日）</div>
+        <div class="stop-name">Grandma's Home Cooking School 泰式烹飪課</div>
+        <div class="stop-note">逛市場採買食材、參觀有機農場，在個人料理台學做泰菜，最後與團員一起用餐。城區 10 公里內飯店有接送，行前一天會收到確認信告知接送時間。早餐少吃一點。</div>
+        <span class="stop-tag t-food">體驗課程</span>
+        <a class="stop-map" href="https://www.klook.com/zh-TW/activity/6936-grandmas-home-cooking-school-chiang-mai/" target="_blank" rel="noopener">🎟️ Klook 報名頁</a>
+      </div>
+    </div>
+    <div class="stop">
+      <div class="stop-dot">☕</div>
+      <div class="stop-body">
+        <div class="stop-time">14:15</div>
+        <div class="stop-name">Magic Brew Coffee</div>
+        <div class="stop-note">⭐4.9（482則）・營業 07:00–15:30（週三公休）・在往素帖寺路上；課程若較晚結束可略過</div>
+        <span class="stop-tag t-cafe">咖啡廳</span><span class="stop-tag t-market">鬧著玩推薦</span>
+        <a class="stop-map" href="https://www.google.com/maps/place/?q=place_id:ChIJ-7ZPy7I72jARYkhM3AgAkRM" target="_blank">📍 地圖</a>
       </div>
     </div>
     <div class="stop">
       <div class="stop-dot">⛰️</div>
       <div class="stop-body">
-        <div class="stop-time">08:30</div>
+        <div class="stop-time">15:30</div>
         <div class="stop-name">素帖寺 Doi Suthep</div>
-        <div class="stop-note">建議 8 點前到，俯瞰整個清邁市區。搭雙條車上山。⭐4.7</div>
+        <div class="stop-note">課程後下午上山，俯瞰整個清邁市區，搭雙條車上山。需蓋肩蓋膝。⭐4.7</div>
         <span class="stop-tag t-sight">景點</span>
         <a class="stop-map" href="https://maps.google.com/?q=Wat+Phra+That+Doi+Suthep+Chiang+Mai" target="_blank">📍 地圖</a>
       </div>
     </div>
     <div class="stop">
-      <div class="stop-dot">🍜</div>
+      <div class="stop-dot">🌙</div>
       <div class="stop-body">
-        <div class="stop-time">12:30</div>
-        <div class="stop-name">Khao-Sōi 午餐</div>
-        <div class="stop-note">清邁最高人氣咖哩麵 ⭐4.8 / 9,099則・12 點準時到避免排隊</div>
-        <span class="stop-tag t-food">午餐</span>
-        <a class="stop-map" href="https://maps.google.com/?q=Khao+Soi+Restaurant+Chiang+Mai" target="_blank">📍 地圖</a>
-      </div>
-    </div>
-    <div class="stop">
-      <div class="stop-dot">🍵</div>
-      <div class="stop-body">
-        <div class="stop-time">15:00</div>
-        <div class="stop-name">Chaseki Specialty Matcha 下午茶</div>
-        <div class="stop-note">清邁最頂級抹茶專門店 ⭐4.9・安靜適合聊天</div>
-        <span class="stop-tag t-cafe">下午茶</span>
-        <a class="stop-map" href="https://maps.google.com/?q=Chaseki+Specialty+Matcha+Chiang+Mai" target="_blank">📍 地圖</a>
-      </div>
-    </div>
-    <div class="stop">
-      <div class="stop-dot">🛍️</div>
-      <div class="stop-body">
-        <div class="stop-time">18:00</div>
-        <div class="stop-name">週六步行街 Wua Lai Walking Street</div>
-        <div class="stop-note">⚠️ 僅週六 18:00–23:00・銀器工藝・北泰美食</div>
-        <span class="stop-tag t-market">週六限定</span>
-        <a class="stop-map" href="https://maps.google.com/?q=Wua+Lai+Walking+Street+Chiang+Mai" target="_blank">📍 地圖</a>
+        <div class="stop-time">19:00</div>
+        <div class="stop-name">清邁夜市 Night Bazaar</div>
+        <div class="stop-note">晚餐邊逛邊吃，最後一晚買伴手禮，預算約 200–400 泰銖</div>
+        <span class="stop-tag t-food">晚餐</span><span class="stop-tag t-market">夜市</span>
+        <a class="stop-map" href="https://maps.google.com/?q=Chiang+Mai+Night+Bazaar" target="_blank">📍 地圖</a>
       </div>
     </div>
     <div class="stop">
@@ -734,7 +796,7 @@ body {
   <div class="cl-section" id="cl-section-travel">
     <div class="cl-sec-title">
       <span>🎫 訂票 & 預訂</span>
-      <span class="cl-progress" id="prog-travel">0/5</span>
+      <span class="cl-progress" id="prog-travel">0/6</span>
     </div>
     <div id="cl-items-travel">
       <div class="cl-item" onclick="toggleCheck(this,'travel')">
@@ -744,7 +806,7 @@ body {
         <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">訂飯店 Le Naview Phra Singh</div><div class="cl-sub">12/18–12/22，確認 Booking.com 訂單</div></div>
       </div>
       <div class="cl-item" onclick="toggleCheck(this,'travel')">
-        <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">預訂大象自然公園 🐘</div><div class="cl-sub">Elephant Nature Park 官網訂票，12/20 全日票</div></div>
+        <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">準備小鈔與零錢 💵</div><div class="cl-sub">12/20 週日步行街、市場多為現金交易</div></div>
       </div>
       <div class="cl-item" onclick="toggleCheck(this,'travel')">
         <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">辦理泰國網路 SIM 卡或 eSIM</div><div class="cl-sub">KKday / Klook 購買，落地即可使用</div></div>
@@ -752,13 +814,16 @@ body {
       <div class="cl-item" onclick="toggleCheck(this,'travel')">
         <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">購買旅遊平安保險</div><div class="cl-sub">含醫療及行李遺失保障</div></div>
       </div>
+      <div class="cl-item" onclick="toggleCheck(this,'travel')">
+        <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">烹飪課 12/21 上午（Klook）</div><div class="cl-sub">12/20 留意確認信，確認飯店接送時間</div></div>
+      </div>
     </div>
   </div>
 
   <div class="cl-section" id="cl-section-money">
     <div class="cl-sec-title">
       <span>💵 金錢 & 文件</span>
-      <span class="cl-progress" id="prog-money">0/4</span>
+      <span class="cl-progress" id="prog-money">0/6</span>
     </div>
     <div id="cl-items-money">
       <div class="cl-item" onclick="toggleCheck(this,'money')">
@@ -773,13 +838,19 @@ body {
       <div class="cl-item" onclick="toggleCheck(this,'money')">
         <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">下載 Grab App 並綁定付款</div><div class="cl-sub">清邁最方便的叫車 App</div></div>
       </div>
+      <div class="cl-item" onclick="toggleCheck(this,'money')">
+        <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">抵達前 72 小時內填寫泰國數位入境卡（TDAC）</div><div class="cl-sub">官網 tdac.immigration.go.th，免費；每人各填一份，12/15–12/18 之間，存好 QR Code</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'money')">
+        <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">攜帶至少 2 萬等值現金</div><div class="cl-sub">入境時可能被查驗財力證明</div></div>
+      </div>
     </div>
   </div>
 
   <div class="cl-section" id="cl-section-pack">
     <div class="cl-sec-title">
       <span>🧳 行李打包</span>
-      <span class="cl-progress" id="prog-pack">0/6</span>
+      <span class="cl-progress" id="prog-pack">0/7</span>
     </div>
     <div id="cl-items-pack">
       <div class="cl-item" onclick="toggleCheck(this,'pack')">
@@ -799,6 +870,9 @@ body {
       </div>
       <div class="cl-item" onclick="toggleCheck(this,'pack')">
         <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">環保購物袋</div><div class="cl-sub">夜市購物方便，泰國部分店家塑膠袋需收費</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'pack')">
+        <div class="cl-cb"></div><div class="cl-text"><div class="cl-label">轉接頭</div><div class="cl-sub">泰國電壓為 220V–230V（50Hz），建議攜帶轉接頭</div></div>
       </div>
     </div>
   </div>
